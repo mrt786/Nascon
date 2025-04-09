@@ -1,0 +1,6 @@
+# Environment files
+**/.env
+**/.env.*
+
+# Node.js dependencies
+**/node_modules/
