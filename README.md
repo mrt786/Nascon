@@ -13,10 +13,11 @@
 ```bash
 set MYSQL_PASS="ur_password"
 set DB_NAME="ur_db_name"
+set JWT_PRIVATE_KEY = "any_strong_random_key"
 ```
 Or simply make a .env file
 
-### 3. Install Packages
+### 2. Install Packages
 Navigate to /backend
 Run the following commands:
 
@@ -24,10 +25,10 @@ Run the following commands:
 npm install
 ```
 
-### 4. Start MySql Workbench
+### 3. Start MySql Workbench
 Just open a connection in MySql workbench
 
-### 5. Run the app
+### 4. Run the app
 ```bash
 npm start
 ```
