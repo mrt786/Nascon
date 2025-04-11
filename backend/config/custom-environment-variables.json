@@ -1,4 +1,5 @@
 {
     "mySqlPass": "MYSQL_PASS",
-    "db": "DB_NAME"
+    "db": "DB_NAME",
+    "jwtPrivateKey": "JWT_PRIVATE_KEY"
 }
