@@ -8,6 +8,8 @@ const config = require('config');
 require('./startup/db');            // Connect to MySQL
 require('./startup/routes')(app);   // Set up routes
 
+app.use(express.json());//to parse json requests
+
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
