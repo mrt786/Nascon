@@ -2,7 +2,7 @@ import React, { useState, useEffect} from 'react';
 import InputBox from '../Global Components/InputBox';
 import AuthToggle from '../Global Components/AuthToogle';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom';
-import RoleSelector from '../RoleSelection';
+import RoleSelector from '../Global Components/RoleSelection';
 import LoginButton from '../Global Components/LoginButton';
 
 
@@ -38,10 +38,10 @@ const ParticipantAuth = () => {
           {activeTab === 'signup' && <InputBox type="text" placeholder="Full Name" />}
           {activeTab === 'login' && (
             <div className="text-right text-sm">
-              <Link to="#" className="text-blue-700">Forgot password?</Link>
+              <Link to="#" className="text-blue-700 focus:outline-none focus:ring-2 focus:ring-pink-500">Forgot password?</Link>
             </div>
           )}
-          <LoginButton text = {activeTab === 'login' ? 'Login' : 'Signup'} />
+          <LoginButton text = {activeTab === 'login' ? 'Login' : 'Signup'} type={ "submit"} btype = { "submit"} />
         </form>
 
         <div className="mt-4 text-sm text-slate-600">

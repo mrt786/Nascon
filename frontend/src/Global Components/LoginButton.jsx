@@ -1,7 +1,11 @@
-LoginButton = (text)=>{
-    <button className="w-full bg-gradient-to-r from-blue-800 to-blue-600 text-white py-2 rounded-md">
-          {text}
-    </button>
-};
+import React from "react";
+
+const LoginButton = ({text, btype})=> (
+    <>
+        <button type = {btype}className="w-full bg-gradient-to-r from-orange-500 focus:outline-none focus:ring-2 focus:ring-pink-500 to-pink-500 text-white py-2 rounded-md ">
+            {text}
+        </button>
+    </>
+);
 
 export default LoginButton;

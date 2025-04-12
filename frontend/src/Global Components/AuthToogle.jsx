@@ -18,13 +18,13 @@ const AuthToggle = ({ activeTab, setActiveTab, tabname }) => {
   return (
     <div className="flex mb-6">
       <button
-        className={`flex-1 py-2 ${activeTab === 'login' ? 'bg-blue-700 text-white' : 'bg-gray-200 text-gray-600'} rounded-l-md`}
+        className={`flex-1 py-2 ${activeTab === 'login' ? 'bg-gradient-to-r from-orange-500 to-pink-500 text-white' : 'text-black'} rounded-l-md focus:outline-none focus:ring-2 focus:ring-pink-500`}
         onClick={() => handleToggle('login')}
       >
         Login
       </button>
       <button
-        className={`flex-1 py-2 ${activeTab === 'signup' ? 'bg-blue-700 text-white' : 'bg-gray-200 text-gray-600'} rounded-r-md`}
+        className={`flex-1 py-2 ${activeTab === 'signup' ? 'bg-gradient-to-r from-orange-500 to-pink-500 text-white' : 'text-black'} rounded-r-md focus:outline-none focus:ring-2 focus:ring-pink-500`}
         onClick={() => handleToggle('signup')}
       >
         Signup

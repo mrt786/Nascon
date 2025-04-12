@@ -10,9 +10,13 @@ const RoleSelector = () => {
     if (selectedRole === 'admin') {
       navigate('/admin-login');
     } else if (selectedRole === 'judge') {
-      navigate('/judge');
+      navigate('/judge-login');
     } else if (selectedRole === 'participant') {
       navigate('/participant-login');
+    }
+    else if (selectedRole === 'sponser')
+    {
+      navigate('/sponser-login')
     }
   };
 
@@ -20,12 +24,12 @@ const RoleSelector = () => {
         <select
           onChange={handleChange}
           defaultValue=""
-          className="w-full p-2 rounded-md bg-slate-800 text-slate-100 placeholder-slate-400 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        >
+          className = "w-full p-2 rounded-md text-black placeholder-slate-400 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-pink-500"        >
           <option value="" disabled>Select Role</option>
           <option value="admin">Admin</option>
           <option value="judge">Judge</option>
           <option value="participant">Participant</option>
+          <option value="sponser">Sponser</option>
         </select>
   );
 };
