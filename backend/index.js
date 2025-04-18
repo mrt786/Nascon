@@ -7,6 +7,7 @@ const config = require('config');
 
 require('./startup/db');            // Connect to MySQL
 const seedAccommodations = require('./startup/accommodationsSeed');
+const seedVenues = require('./startup/venuesSeed');
 require('./startup/routes')(app);   // Set up routes
 
 
@@ -14,6 +15,7 @@ require('./startup/routes')(app);   // Set up routes
 (async () => {
     try {
         await seedAccommodations();  // Seed accommodations if needed
+        await seedVenues();
         app.listen(port, () => {
             console.log(`Server running on port ${port}`);
         });
