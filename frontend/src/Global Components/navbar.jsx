@@ -27,7 +27,6 @@ const Navbar = ({ role }) => {
     const links = navOptions[role] || [];
 
     return (
-        <div className="p-[2px] bg-gradient-to-r from-orange-500 to-pink-500 ">
         <nav className="bg-slate-900 text-white shadow-md">
         <div className="container mx-auto px-4 py-3 flex items-center">
             <h2 className="text-xl font-bold capitalize">{role} Panel</h2>
@@ -52,7 +51,6 @@ const Navbar = ({ role }) => {
             </div>
         </div>
         </nav>
-        </div>
     );
     };
 
