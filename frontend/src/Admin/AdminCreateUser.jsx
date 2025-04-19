@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import LoginButton from '../Global Components/LoginButton';
 import InputBox from '../Global Components/InputBox';
+import Navbar from '../Global Components/navbar';
 
 const AdminCreateUser = () => {
   const [formData, setFormData] = useState({
@@ -23,7 +24,9 @@ const AdminCreateUser = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-900 text-white">
+    <div >
+      <Navbar role = 'admin'/>
+      <div className="min-h-screen flex items-center justify-center bg-slate-900 text-white">
       <div className="bg-white rounded-2xl shadow-xl p-8 w-[380px] text-center">
         <h2 className="text-2xl font-bold mb-6 text-slate-800">Create New User</h2>
         
@@ -44,6 +47,7 @@ const AdminCreateUser = () => {
           <LoginButton btype = 'submit' text = 'Create User'/>
         </form>
       </div>
+    </div>
     </div>
   );
 };
