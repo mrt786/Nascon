@@ -3,19 +3,19 @@ import { Link, useLocation } from 'react-router-dom';
 
 const navOptions = {
   admin: [
-    { path: '/admin-home', label: 'Home' },
+    { path: '/home', label: 'Home' },
     { path: '/create-user', label: 'Create User' },
     { path: '/approve-events', label: 'Approve Events' },
     { path: '/admin-events', label: 'Events' },
     { path: '/accommodation-settings', label: 'Accommodations' },
   ],
   judge: [
-    { path: '/judge-home', label: 'Home' },
+    { path: '/home', label: 'Home' },
     { path: '/judge-events', label: 'My Events' },
     { path: '/judge-score', label: 'Score Participants' },
   ],
   participant: [
-    { path: '/participant-home', label: 'Home' },
+    { path: '/home', label: 'Home' },
     { path: '/my-events', label: 'My Events' },
     { path: '/event-register', label: 'Register' },
   ]

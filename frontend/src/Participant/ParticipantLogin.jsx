@@ -27,9 +27,9 @@ const ParticipantAuth = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-900 text-white">
-      <div className="bg-white rounded-2xl shadow-xl p-8 w-[350px] text-center">
-        <h2 className="text-2xl font-bold mb-4 text-slate-800">{activeTab === 'login' ? 'Participant Login Form' : 'Participant Signup Form'}</h2>
+    <div className="min-h-screen flex items-center justify-center bg-slate-800 text-white">
+      <div className="bg-slate-900 rounded-2xl shadow-xl p-8 w-[350px] text-center">
+        <h2 className="text-2xl font-bold mb-4 text-orange-500">{activeTab === 'login' ? 'Participant Login Form' : 'Participant Signup Form'}</h2>
         <AuthToggle activeTab={activeTab} setActiveTab={setActiveTab} tabname= {'participant'} />
         <form className="space-y-3">
           <RoleSelector/>

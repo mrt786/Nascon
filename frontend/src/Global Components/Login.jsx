@@ -38,9 +38,9 @@ const Login = ({ role }) => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-900 text-white">
-      <div className="bg-white rounded-2xl shadow-xl p-8 w-[350px] text-center relative">
-        <h2 className="text-2xl font-bold mb-4 text-slate-800 capitalize">
+    <div className="min-h-screen flex items-center justify-center bg-slate-800 text-white">
+      <div className="bg-slate-900 rounded-2xl shadow-xl p-8 w-[350px] text-center relative">
+        <h2 className="text-2xl font-bold mb-4 text-orange-500 capitalize">
           {role} Login Form
         </h2>
 
