@@ -38,7 +38,7 @@ const AdminCreateUser = () => {
               className="w-full p-2 rounded-md text-black placeholder-slate-400 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-pink-500"
           >
               <option value="judge">Judge</option>
-              <option value="admin">Admin</option>
+              <option value="sponser">Sponser</option>
           </select>
 
           <LoginButton btype = 'submit' text = 'Create User'/>
