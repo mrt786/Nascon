@@ -27,8 +27,8 @@ const AdminCreateUser = () => {
     <div >
       <Navbar role = 'admin'/>
       <div className="min-h-screen flex items-center justify-center bg-slate-800 text-white">
-      <div className="bg-white rounded-2xl shadow-xl p-8 w-[380px] text-center">
-        <h2 className="text-2xl font-bold mb-6 text-slate-800">Create New User</h2>
+      <div className="bg-slate-900 rounded-2xl shadow-xl p-8 w-[380px] text-center">
+        <h2 className="text-2xl font-bold mb-6 text-orange-500">Create New User</h2>
         
         <form onSubmit={handleSubmit} className="space-y-4 text-left"> 
           <InputBox type = 'text' bname = 'name' bvalue={formData.value} change = {handleChange} placeholder = "Your Name"/>
