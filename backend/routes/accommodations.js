@@ -74,6 +74,22 @@ router.get('/available', async (req, res) => {
       res.status(500).send({ error: err.message });
     }
   });
+
+  // Get accommodation by ID
+router.get('/:id', async (req, res) => {
+  const accommodationId = req.params.id;
+
+  try {
+    const [rows] = await db.query('SELECT * FROM accommodations WHERE accommodation_id = ?', [accommodationId]);
+    
+    if (rows.length === 0)
+      return res.status(404).send({ error: 'Accommodation not found.' });
+
+    res.send(rows[0]);
+  } catch (err) {
+    res.status(500).send({ error: err.message });
+  }
+});
   
 
 module.exports = router;
