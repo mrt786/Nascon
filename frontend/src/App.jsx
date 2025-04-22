@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import ParticipantAuth from './Participant/ParticipantLogin.jsx';
 import Login from './Global Components/Login.jsx';
 import AdminCreateUser from './Admin/AdminCreateUser.jsx';
+import AccommodationPage from './Global Components/Accommodation.jsx';
 export default function App() {
   return (
     <Router>
@@ -13,6 +14,7 @@ export default function App() {
         <Route path="/judge-login" element={<Login role={ "judge"} />} />
         <Route path="/sponser-login" element={<Login role={ "sponser"}/> } />
         <Route path='/create-user' element = {<AdminCreateUser/> } />
+        <Route path="/accommodations" element={<AccommodationPage userId="0034" />} />
       </Routes>
     </Router>
   );

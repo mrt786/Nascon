@@ -1,3 +1,0 @@
-npm install (to initialize the node modules)
-npm install tailwindcss @tailwindcss/vite (tailwind installtion) 
-
