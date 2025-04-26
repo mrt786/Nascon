@@ -16,6 +16,7 @@ const AccommodationPage = ({ userId }) => {
   };
 
   const handleBook = async (acc) => {
+    console.log(acc)
     try {
       const response = await axios.post('http://localhost:3000/accommodations/book', {
         userId,

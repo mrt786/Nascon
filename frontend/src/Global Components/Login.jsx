@@ -14,7 +14,7 @@ const Login = ({ role }) => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`http://your-backend-url.com/${role}/login`, {
+      const response = await fetch(`http://localhost:3000/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
