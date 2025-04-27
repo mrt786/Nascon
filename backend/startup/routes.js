@@ -8,5 +8,6 @@ module.exports = function(app) {
   app.use('/auth', require('../routes/login_signup'));
   app.use('/accommodations', require('../routes/accommodations'));
   app.use('/venues', require('../routes/venues'));
+  app.use('/events', require('../routes/events'));
   app.use(error);
 };
