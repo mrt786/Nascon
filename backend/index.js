@@ -8,6 +8,7 @@ const config = require('config');
 app.use(cors({ origin: 'http://localhost:5173' }));
 require('./startup/db');            // Connect to MySQL
 const seedAccommodations = require('./startup/accommodationsSeed');
+const seedVenues = require('./startup/venuesSeed');
 require('./startup/routes')(app);   // Set up routes
 // Enable CORS for all origins (or restrict it to your frontend)
 
@@ -16,6 +17,7 @@ require('./startup/routes')(app);   // Set up routes
 (async () => {
     try {
         await seedAccommodations();  // Seed accommodations if needed
+        await seedVenues();
         app.listen(port, () => {
             console.log(`Server running on port ${port}`);
         });
