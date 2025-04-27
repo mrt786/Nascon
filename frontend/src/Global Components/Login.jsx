@@ -3,44 +3,45 @@ import InputBox from './InputBox';
 import LoginButton from './LoginButton';
 import { useNavigate } from 'react-router-dom';
 import RoleSelector from './RoleSelection';
+import axios from 'axios';
 
 const Login = ({ role }) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorPopup, setErrorPopup] = useState(false);
-
+  const [showPassword, setShowPassword] = useState(false); // State for showing password
+  const handlePasswordToggle = () => {
+    setShowPassword(prevState => !prevState); // Toggle the state of password visibility
+  };
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`http://localhost:3000/login`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
+      const response = await await axios.post('http://localhost:3000/auth/login', {
+        email,
+        password,
       });
+      const  token  = response.data.token;
+      localStorage.setItem('token', token); // Save token for authentication
 
-      const result = await response.json();
-
-      if (response.ok && result.success) {
-        navigate(`/${role}-home`);
+      alert('Login successful!');
+      navigate('/home'); // change the route to home
+    } catch (error) 
+    {
+      console.error(error);
+      if (error.response && error.response.data && error.response.data.error) {
+        setErrorPopup(error.response.data.error);
       } else {
-        setErrorPopup(true);
-        setTimeout(() => setErrorPopup(false), 3000); // Auto-hide after 3 sec
+        setErrorPopup('Something went wrong. Please try again.');
       }
-    } catch (err) {
-      console.error('Login error:', err);
-      setErrorPopup(true);
-      setTimeout(() => setErrorPopup(false), 3000);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-900 text-white">
-      <div className="bg-white rounded-2xl shadow-xl p-8 w-[350px] text-center relative">
-        <h2 className="text-2xl font-bold mb-4 text-slate-800 capitalize">
+    <div className="min-h-screen flex items-center justify-center bg-slate-800 text-white">
+      <div className="bg-slate-900 rounded-2xl shadow-xl p-8 w-[350px] text-center relative">
+        <h2 className="text-2xl font-bold mb-4 text-orange-500 capitalize">
           {role} Login Form
         </h2>
 
@@ -51,15 +52,24 @@ const Login = ({ role }) => {
             type="email"
             placeholder="Email Address"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            change ={(e) => setEmail(e.target.value)}
           />
-          <InputBox
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-
+          <div className="relative">
+              <InputBox
+                type={showPassword ? 'text' : 'password'} // Toggle between text and password
+                bname='password'
+                bvalue={password}
+                change={(e) => setPassword(e.target.value)}
+                placeholder='Your Password'
+              />
+              <button
+                type="button"
+                onClick={handlePasswordToggle}
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 text-slate-500"
+              >
+                {showPassword ? 'Hide' : 'Show'} {/* Button text */}
+              </button>
+            </div>
           <div className="text-right text-sm">
             <a href="#" className="text-blue-700 focus:outline-none focus:ring-2 focus:ring-pink-500">Forgot password?</a>
           </div>

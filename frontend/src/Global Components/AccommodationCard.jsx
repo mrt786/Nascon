@@ -1,6 +1,6 @@
 const AccommodationCard = ({ accommodation, onBook }) => {
     return (
-      <div className="bg-slate-800 rounded-xl shadow-md overflow-hidden w-[300px]">
+      <div className="bg-slate-900 rounded-xl shadow-md overflow-hidden w-[300px]">
         <img
           src= './accomodation.jpeg'
           alt="Accommodation"
