@@ -4,6 +4,7 @@ import ParticipantAuth from './Participant/ParticipantLogin.jsx';
 import Login from './Global Components/Login.jsx';
 import AdminCreateUser from './Admin/AdminCreateUser.jsx';
 import AccommodationPage from './Global Components/Accommodation.jsx';
+import HomePage from './Global Components/Home.jsx';
 export default function App() {
   return (
     <Router>
@@ -15,6 +16,7 @@ export default function App() {
         <Route path="/sponser-login" element={<Login role={ "sponser"}/> } />
         <Route path='/create-user' element = {<AdminCreateUser/> } />
         <Route path="/accommodations" element={<AccommodationPage userId="0034" />} />
+        <Route path='/home'  element = {<HomePage roles = {'participant'}/>}/>
       </Routes>
     </Router>
   );

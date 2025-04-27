@@ -5,10 +5,18 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import RoleSelector from '../Global Components/RoleSelection';
 import LoginButton from '../Global Components/LoginButton';
 import axios from 'axios';
+import { validatePassword } from '../utils/auth';
+import { validatePhone } from '../utils/auth';
+
 
 const ParticipantAuth = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false); // State for showing password
+  const handlePasswordToggle = () => {
+    setShowPassword(prevState => !prevState); // Toggle the state of password visibility
+  };
+  
   const [activeTab, setActiveTab] = useState('login');
 
   const [firstName, setFirstName] = useState('');
@@ -27,35 +35,7 @@ const ParticipantAuth = () => {
     navigate(tab === 'login' ? '/participant-login' : '/participant-signup');
   };
 
-// Phone: must be 11 digits, start with "03", all numeric
-const validatePhone = (phone) => {
-  if (phone.length !== 11) return false;
-  if (!phone.startsWith('03')) return false;
-  // ensure every character is a digit
-  return [...phone].every(ch => ch >= '0' && ch <= '9');
-};
 
-// Password: at least 8 chars, and one of each: lowercase, uppercase, digit, special
-const validatePassword = (password) => {
-
-
-  let hasLower = false;
-  let hasUpper = false;
-  let hasDigit = false;
-  let hasSpecial = false;
-
-  const specialCharacters = "!@#$%^&*()-_=+[]{}|;:'\",.<>/?`~";
-
-  for (const ch of password) {
-    if (ch >= 'a' && ch <= 'z') hasLower = true;
-    else if (ch >= 'A' && ch <= 'Z') hasUpper = true;
-    else if (ch >= '0' && ch <= '9') hasDigit = true;
-    else if (specialCharacters.includes(ch)) hasSpecial = true;
-
-  }
-
-  return hasLower && hasUpper && hasDigit && hasSpecial;
-};
 
 const handleSubmit = async (e) => {
   e.preventDefault();
@@ -63,15 +43,15 @@ const handleSubmit = async (e) => {
 
   try {
     if (activeTab === 'signup') {
-      if (!validatePassword(password)) {
-        setValidationError(
-          'Password must be ≥8 chars, include uppercase, lowercase & a special character.'
-        );
+      const passwordValidation = validatePassword(formData.password);
+      if (!passwordValidation['valid']) {
+        setValidationError(passwordValidation['message']);
         return;
       }
-      if (!validatePhone(phoneNumber)) {
-        setValidationError('Phone number must be 11 digits and start with 03.');
-        return;
+      const phoneValidation = validatePhone(formData.phonenumber);
+      if (!phoneValidation['valid']) {
+        setValidationError(phoneValidation['message']);
+        return; 
       }
 
       // Call signup API
@@ -94,14 +74,14 @@ const handleSubmit = async (e) => {
         password,
       });
 
-      console.log(response.data);
-      const { token } = response.data;
+      const  token  = response.data.token;
       localStorage.setItem('token', token); // Save token for authentication
 
       alert('Login successful!');
-      navigate('/create-user'); // change the route to home
+      navigate('/home'); // change the route to home
     }
-  } catch (error) {
+  } catch (error) 
+  {
     console.error(error);
     if (error.response && error.response.data && error.response.data.error) {
       setValidationError(error.response.data.error);
@@ -112,9 +92,9 @@ const handleSubmit = async (e) => {
 };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-900 text-white">
-      <div className="bg-white rounded-2xl shadow-xl p-8 w-[350px] text-center">
-        <h2 className="text-2xl font-bold mb-4 text-slate-800">
+    <div className="min-h-screen flex items-center justify-center bg-slate-800 text-white">
+      <div className="bg-slate-900 rounded-2xl shadow-xl p-8 w-[350px] text-center">
+        <h2 className="text-2xl font-bold mb-4 text-orange-500">
           {activeTab === 'login'
             ? 'Participant Login Form'
             : 'Participant Signup Form'}
@@ -157,12 +137,22 @@ const handleSubmit = async (e) => {
             value={email}
             change ={(e) => setEmail(e.target.value)}
           />
-          <InputBox
-            type="password"
-            placeholder="Password"
-            value={password}
-            change ={(e) => setPassword(e.target.value)}
-          />
+          <div className="relative">
+              <InputBox
+                type={showPassword ? 'text' : 'password'} // Toggle between text and password
+                bname='password'
+                bvalue={password}
+                change={(e) => setPassword(e.target.value)}
+                placeholder='Your Password'
+              />
+              <button
+                type="button"
+                onClick={handlePasswordToggle}
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 text-slate-500"
+              >
+                {showPassword ? 'Hide' : 'Show'} {/* Button text */}
+              </button>
+            </div>
 
           {validationError && (
             <p className="text-red-600 text-sm text-left">
@@ -187,6 +177,13 @@ const handleSubmit = async (e) => {
             btype="submit"
           />
         </form>
+        <div className="mt-4 text-sm text-slate-600">
+          {activeTab === 'login' ? (
+            <>Not a member? <span onClick={() => handleTabChange('signup')} className="text-blue-700 cursor-pointer">Signup now</span></>
+          ) : (
+            <>Already have an account? <span onClick={() => handleTabChange('login')} className="text-blue-700 cursor-pointer">Login</span></>
+          )}
+        </div>
       </div>
     </div>
   );
