@@ -43,12 +43,12 @@ const handleSubmit = async (e) => {
 
   try {
     if (activeTab === 'signup') {
-      const passwordValidation = validatePassword(formData.password);
+      const passwordValidation = validatePassword(password);
       if (!passwordValidation['valid']) {
         setValidationError(passwordValidation['message']);
         return;
       }
-      const phoneValidation = validatePhone(formData.phonenumber);
+      const phoneValidation = validatePhone(phoneNumber);
       if (!phoneValidation['valid']) {
         setValidationError(phoneValidation['message']);
         return; 

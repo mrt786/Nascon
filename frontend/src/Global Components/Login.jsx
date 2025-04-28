@@ -18,7 +18,7 @@ const Login = ({ role }) => {
     e.preventDefault();
 
     try {
-      const response = await await axios.post('http://localhost:3000/auth/login', {
+      const response = await axios.post('http://localhost:3000/auth/login', {
         email,
         password,
       });

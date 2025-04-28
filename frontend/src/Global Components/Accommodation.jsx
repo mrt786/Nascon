@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import AccommodationCard from './AccommodationCard';
 import Navbar from './Navbar';
 import { getUserRole } from '../utils/auth'; // Adjust the import path as necessary
-const AccommodationPage = ({ userId }) => {
-
+const AccommodationPage = () => {
+  const navigate = useNavigate();
   const [date, setDate] = useState('');
   const [accommodations, setAccommodations] = useState([]);
 
@@ -18,19 +19,21 @@ const AccommodationPage = ({ userId }) => {
     }
   };
 
-  const handleBook = async (acc) => {
-    console.log(acc)
-    try {
-      const response = await axios.post('http://localhost:3000/accommodations/book', {
-        userId,
-        accommodationId: acc._id,
-        location: acc.location,
-        date,
-      });
-      alert('Booking successful!');
-    } catch (err) {
-      alert('Error booking accommodation. Try again.');
-    }
+  const handleBook = (acc) => {
+    console.log('Booking accommodation:', acc);
+
+    navigate('/booking', { 
+      state: { 
+        accommodation: { 
+          _id: acc.accommodation_id,
+          bookingdate: date,
+          name: acc.location,
+          location: acc.location,
+          price: acc.price,
+        },
+        date 
+      } 
+    });
   };
 
   useEffect(() => {
@@ -62,7 +65,7 @@ const AccommodationPage = ({ userId }) => {
                 <AccommodationCard key={acc._id} accommodation={acc} onBook={handleBook} />
               ))
             ) : (
-              <p>No accommodations available for this date.</p>
+              <p>Please Select Date to Book An Accomodation </p>
             )}
           </div>
         {/* )} */}

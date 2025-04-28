@@ -1,6 +1,6 @@
 import React from 'react';
 import Countdown from './Countdown';
-import Navbar from './navbar';
+import Navbar from './Navbar';
 import Cards from './HighlightCard';
 import { getUserRole } from '../utils/auth';
 
