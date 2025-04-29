@@ -9,5 +9,8 @@ module.exports = function(app) {
   app.use('/accommodations', require('../routes/accommodations'));
   app.use('/venues', require('../routes/venues'));
   app.use('/events', require('../routes/events'));
+  app.use('/sponsors', require('../routes/sponsors'));
+  app.use('/event-organizer', require('../routes/event_organizer'));
+  app.use('/admin', require('../routes/admin'));
   app.use(error);
 };

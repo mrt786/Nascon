@@ -32,9 +32,7 @@ router.post('/signup', async (req, res) => {
     const userId = result.insertId;
 
     // Insert into role-specific table
-    if (role === 'participant') {
-      await db.query('INSERT INTO participants (user_id) VALUES (?)', [userId]);
-    } else if (role === 'sponsor') {
+      if (role === 'sponsor') {
       await db.query('INSERT INTO sponsors (sponsor_id) VALUES (?)', [userId]);
     } else if (role === 'judge') {
       await db.query('INSERT INTO judges (user_id) VALUES (?)', [userId]);
