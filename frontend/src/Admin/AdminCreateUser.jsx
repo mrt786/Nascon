@@ -42,7 +42,7 @@ const AdminCreateUser = () => {
         setValidationError(phoneValidation['message']);
         return; 
       }
-
+      console.log("THe data present in the form is: ",formData)
       const response = await axios.post('http://localhost:3000/auth/signup', {
         fname: formData.firstname,
         lname: formData.lastname,
@@ -101,6 +101,7 @@ const AdminCreateUser = () => {
           >
               <option value="judge">Judge</option>
               <option value="sponser">Sponser</option>
+              <option value="event_organizer">Event Organizer</option>
           </select>
           
           {validationError && <p className="text-red-500 text-sm">{validationError}</p>}

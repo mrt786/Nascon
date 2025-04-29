@@ -20,6 +20,13 @@ const navOptions = {
     { path: '/event-register', label: 'Register' },
     { path: '/accommodations', label: 'Accommodations' }
 
+  ],
+  event_organizer:[
+    { path: '/home', label: 'Home' },
+    { path: '/organize-events', label: 'Organize Event' },
+    { path: '/approved-events', label: 'Approved' },
+    { path: '/pending-events', label: 'Pending Events' }
+
   ]
 };
 

@@ -18,6 +18,10 @@ const RoleSelector = () => {
     {
       navigate('/sponser-login')
     }
+    else if (selectedRole === 'event_organizer')
+    {
+        navigate('/event_organizer')
+    }
   };
 
   return (
@@ -30,6 +34,7 @@ const RoleSelector = () => {
           <option value="judge">Judge</option>
           <option value="participant">Participant</option>
           <option value="sponser">Sponser</option>
+          <option value="event_organizer">Event Organizer</option>
         </select>
   );
 };
