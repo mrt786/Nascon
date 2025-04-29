@@ -4,6 +4,7 @@ import InputBox from '../Global Components/InputBox';
 import Navbar from '../Global Components/Navbar';
 import { validatePassword } from '../utils/auth';
 import { validatePhone } from '../utils/auth';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const AdminCreateUser = () => {
@@ -16,6 +17,7 @@ const AdminCreateUser = () => {
     userType: 'judge', // default to judge
 
   });
+  const navigate = useNavigate();
   const [validationError, setValidationError] = useState('');
   const [showPassword, setShowPassword] = useState(false); // State for showing password
   const handlePasswordToggle = () => {
@@ -53,6 +55,7 @@ const AdminCreateUser = () => {
       });
       console.log(response.data);
       alert(formData.userType,' created successfully!')
+      navigate('/home'); 
     
     } 
     catch (error) {

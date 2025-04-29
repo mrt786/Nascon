@@ -20,7 +20,7 @@ const RoleSelector = () => {
     }
     else if (selectedRole === 'event_organizer')
     {
-        navigate('/event_organizer')
+        navigate('/event_organizer-login')
     }
   };
 

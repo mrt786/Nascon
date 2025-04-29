@@ -6,6 +6,8 @@ import AdminCreateUser from './Admin/AdminCreateUser.jsx';
 import AccommodationPage from './Global Components/Accommodation.jsx';
 import HomePage from './Global Components/Home.jsx';
 import BookingForm from './Global Components/BookingForm.jsx';
+import OrganizeEvent from './Global Components/OrganizeEvent.jsx';
+import PendingEventsPage from './Admin/PendingEvents.jsx';
 export default function App() {
   return (
     <Router>
@@ -15,6 +17,9 @@ export default function App() {
         <Route path="/admin-login" element={<Login role={ "admin"} />} />
         <Route path="/judge-login" element={<Login role={ "judge"} />} />
         <Route path="/sponser-login" element={<Login role={ "sponser"}/> } />
+        <Route path = "/event_organizer-login" element={<Login role={ "Event Organizer"} />} />
+        <Route path = "/organize-events" element={<OrganizeEvent />} />
+        <Route path = '/approve-events' element = {<PendingEventsPage />} />
         <Route path='/create-user' element = {<AdminCreateUser/> } />
         <Route path="/accommodations" element={<AccommodationPage  />} />
         <Route path='/home'  element = {<HomePage roles = {'participant'}/>}/>
