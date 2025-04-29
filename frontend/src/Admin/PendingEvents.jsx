@@ -14,12 +14,13 @@ const PendingEventsPage = () => {
     try {
       const token = localStorage.getItem('token');
       const res = await axios.get(
-        'http://localhost:3000/events/pending-approval-by-admin',
+        'http://localhost:3000/admin/pending-approval-by-admin',
         { headers: { Authorization: `${token}` } }
       );
       console.log(res.data);
       setEvents(res.data);
     } catch (err) {
+        // console.log('The response while fetching eveents: ', res.data)
       setError(err.response?.data?.error || 'Failed to load pending events.');
     }
   };

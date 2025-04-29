@@ -8,7 +8,7 @@ router.post('/send-event-for-approval', auth, async (req, res) => {
   const { category, event_name, event_date, registration_fee, current_round, rules, event_description, max_participants } = req.body;
   const user = req.user;
 
-  if (user.user_role !== 'event_organizer') {
+  if (user.role !== 'event_organizer') {
     return res.status(403).send({ error: 'Access denied. Only event organizers can send events for approval.' });
   }
 
@@ -41,7 +41,7 @@ router.post('/send-event-for-approval', auth, async (req, res) => {
 router.get('/my-events', auth, async (req, res) => {
     const user = req.user;
   
-    if (user.user_role !== 'event_organizer') {
+    if (user.role !== 'event_organizer') {
       return res.status(403).send({ error: 'Access denied. Only event organizers can view their events.' });
     }
   
@@ -80,7 +80,7 @@ router.get('/my-events', auth, async (req, res) => {
     const { event_id, sponsorships } = req.body; // sponsorships: [{ sponsor_level, sponsor_amount }, ...]
     const user = req.user;
   
-    if (user.user_role !== 'event_organizer') {
+    if (user.role !== 'event_organizer') {
       return res.status(403).send({ error: 'Access denied. Only event organizers can add sponsorships.' });
     }
   
@@ -124,7 +124,7 @@ router.get('/event/:event_id', auth, async (req, res) => {
     const { event_id } = req.params;
     const user = req.user;
   
-    if (user.user_role !== 'event_organizer') {
+    if (user.role !== 'event_organizer') {
       return res.status(403).send({ error: 'Access denied. Only event organizers can view event details.' });
     }
   
@@ -155,7 +155,7 @@ router.get('/event-sponsor-amount/:eventId', auth, async (req, res) => {
   const user = req.user;
   const eventId = req.params.eventId;
 
-  if (user.user_role !== 'event_organizer') {
+  if (user.role !== 'event_organizer') {
     return res.status(403).send({ error: 'Access denied. Only event organizers can access sponsor amounts.' });
   }
 
@@ -187,7 +187,7 @@ router.get('/event-sponsor-amount/:eventId', auth, async (req, res) => {
 router.get('/sponsor-income-report', auth, async (req, res) => {
     const user = req.user;
   
-    if (user.user_role !== 'event_organizer') {
+    if (user.role !== 'event_organizer') {
       return res.status(403).send({ error: 'Access denied. Only event organizers can access sponsor reports.' });
     }
   

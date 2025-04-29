@@ -8,7 +8,7 @@ router.post('/approve-event', auth, async (req, res) => {
   const { event_id } = req.body;
   const user = req.user;
 
-  if (user.user_role !== 'admin') {
+  if (user.role!== 'admin') {
     return res.status(403).send({ error: 'Access denied. Only admins can approve events.' });
   }
 
@@ -34,7 +34,7 @@ router.delete('/reject-event-by-admin/:event_id', auth, async (req, res) => {
     const user = req.user;
     const { event_id } = req.params;
   
-    if (user.user_role !== 'admin') {
+    if (user.role!== 'admin') {
       return res.status(403).send({ error: 'Access denied. Only admins can reject events.' });
     }
   
@@ -56,7 +56,7 @@ router.delete('/reject-event-by-admin/:event_id', auth, async (req, res) => {
 router.get('/pending-approval-by-admin', auth, async (req, res) => {
   const user = req.user;
 
-  if (user.user_role !== 'admin') {
+  if (user.role!== 'admin') {
     return res.status(403).send({ error: 'Access denied. Only admins can view pending events.' });
   }
 

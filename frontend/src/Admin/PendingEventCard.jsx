@@ -10,7 +10,7 @@ const PendingEventCard = ({ event, onAction }) => {
     try {
       const token = localStorage.getItem('token');
       await axios.post(
-        'http://localhost:3000/events/approve-event',
+        'http://localhost:3000/admin/approve-event',
         { event_id: event.event_id },
         { headers: { Authorization: `${token}` } }
       );
@@ -27,7 +27,7 @@ const PendingEventCard = ({ event, onAction }) => {
     try {
       const token = localStorage.getItem('token');
       await axios.delete(
-        `http://localhost:3000/events/reject-event-by-admin/${event.event_id}`,
+        `http://localhost:3000/admin/reject-event-by-admin/${event.event_id}`,
         { headers: { Authorization: `${token}` } }
       );
       onAction();

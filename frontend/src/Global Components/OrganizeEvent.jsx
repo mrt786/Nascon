@@ -57,7 +57,7 @@ const OrganizeEvent = () => {
     try {
       const token = localStorage.getItem('token');
       const res = await axios.post(
-        'http://localhost:3000/events/send-event-for-approval',
+        'http://localhost:3000/event-organizer/send-event-for-approval',
         formData,
         { headers: { Authorization: `${token}` } }
       );
