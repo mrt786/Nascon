@@ -43,7 +43,6 @@ const PendingEventCard = ({ event, onAction }) => {
   {/* Basic Info (always visible) */}
   <div>
     <h2 className="text-xl font-bold text-orange-500">{event.event_name}</h2>
-    <p className="text-sm text-white"><strong>ID: </strong> {event.event_id}</p>
     <p className="text-sm text-white"><strong>Fee: Rs</strong> {event.registration_fee}</p>
   </div>
 

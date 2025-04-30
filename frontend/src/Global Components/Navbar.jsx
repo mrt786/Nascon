@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 const navOptions = {
   admin: [
     { path: '/home', label: 'Home' },
+    {path : '/events', label: 'Events'},
     { path: '/create-user', label: 'Create User' },
     { path: '/approve-events', label: 'Approve Events' },
     { path: '/admin-events', label: 'Events' },
@@ -16,6 +17,7 @@ const navOptions = {
   ],
   participant: [
     { path: '/home', label: 'Home' },
+    {path : '/events', label: 'Events'},
     { path: '/my-events', label: 'My Events' },
     { path: '/event-register', label: 'Register' },
     { path: '/accommodations', label: 'Accommodations' }

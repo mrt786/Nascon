@@ -8,6 +8,7 @@ import HomePage from './Global Components/Home.jsx';
 import BookingForm from './Global Components/BookingForm.jsx';
 import OrganizeEvent from './Global Components/OrganizeEvent.jsx';
 import PendingEventsPage from './Admin/PendingEvents.jsx';
+import ApprovedEventsPage from './Global Components/Events.jsx';
 export default function App() {
   return (
     <Router>
@@ -25,6 +26,7 @@ export default function App() {
         <Route path='/home'  element = {<HomePage roles = {'participant'}/>}/>
         <Route path = '/booking' element = {<BookingForm/>}/> 
         <Route path="/" element={<Login role={ "participant"} />} />
+        <Route path="/events" element={<ApprovedEventsPage/>} />
 
       </Routes>
     </Router>
