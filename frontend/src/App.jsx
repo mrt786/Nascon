@@ -8,7 +8,8 @@ import HomePage from './Global Components/Home.jsx';
 import BookingForm from './Global Components/BookingForm.jsx';
 import OrganizeEvent from './Global Components/OrganizeEvent.jsx';
 import PendingEventsPage from './Admin/PendingEvents.jsx';
-import ApprovedEventsPage from './Global Components/Events.jsx';
+import SponserEventPage from './Sponsers/SponserEventPage.jsx';
+import ApprovedEventsPage from './Global Components/Events.jsx'
 export default function App() {
   return (
     <Router>
@@ -17,7 +18,7 @@ export default function App() {
         <Route path="/participant-signup" element={<ParticipantAuth />} />
         <Route path="/admin-login" element={<Login role={ "admin"} />} />
         <Route path="/judge-login" element={<Login role={ "judge"} />} />
-        <Route path="/sponser-login" element={<Login role={ "sponser"}/> } />
+        <Route path="/sponsor-login" element={<Login role={ "sponsor"}/> } />
         <Route path = "/event_organizer-login" element={<Login role={ "Event Organizer"} />} />
         <Route path = "/organize-events" element={<OrganizeEvent />} />
         <Route path = '/approve-events' element = {<PendingEventsPage />} />
@@ -27,6 +28,7 @@ export default function App() {
         <Route path = '/booking' element = {<BookingForm/>}/> 
         <Route path="/" element={<Login role={ "participant"} />} />
         <Route path="/events" element={<ApprovedEventsPage/>} />
+        <Route path = '/sponsor-events' element = {<SponserEventPage/>} />
 
       </Routes>
     </Router>

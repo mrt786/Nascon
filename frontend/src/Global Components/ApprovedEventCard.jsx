@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import LoginButton from './LoginButton';
 
 const ApprovedEventCard = ({ event, onAction }) => {
   const [loading, setLoading] = useState(false);
@@ -22,8 +23,10 @@ const ApprovedEventCard = ({ event, onAction }) => {
     <p><strong>Rules:</strong> {event.rules}</p>
     <p><strong>Description:</strong> {event.event_description}</p>
 
-    {/* Action Buttons */}
-
+    {/* Register Event Button */}
+    <div className='my-4'>
+      <LoginButton text = "Register"  btype = 'submit' />
+    </div>
   </div>
 </div>
   );

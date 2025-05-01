@@ -6,7 +6,7 @@ const auth = require('../middleware/auth');
 
 // view all approved events + their sponsorship packages (sponsors only)
 router.get('/approved-events', auth, async (req, res) => {
-  if (req.user.user_role !== 'sponsor') {
+  if (req.user.role !== 'sponsor') {
     return res.status(403).send({ error: 'Access denied. Only sponsors can view this.' });
   }
 
@@ -38,7 +38,7 @@ router.get('/approved-events', auth, async (req, res) => {
 
 // choose an event + package -> creates payment record + link  (sponsor only)
 router.post('/select-package', auth, async (req, res) => {
-  if (req.user.user_role !== 'sponsor') {
+  if (req.user.role !== 'sponsor') {
     return res.status(403).send({ error: 'Access denied. Only sponsors can select packages.' });
   }
 
@@ -81,7 +81,7 @@ router.post('/select-package', auth, async (req, res) => {
 
 // 3) get own payments + statuses (sponsors only)
 router.get('/payments', auth, async (req, res) => {
-  if (req.user.user_role !== 'sponsor') {
+  if (req.user.role !== 'sponsor') {
     return res.status(403).send({ error: 'Access denied. Only sponsors can view payments.' });
   }
 
@@ -114,7 +114,7 @@ router.get('/payments', auth, async (req, res) => {
 
 // Sponsors only: pay for a pending payment
 router.post('/pay/:payment_id', auth, async (req, res) => {
-  if (req.user.user_role !== 'sponsor') {
+  if (req.user.role !== 'sponsor') {
     return res.status(403).send({ error: 'Access denied. Only sponsors can pay.' });
   }
 
