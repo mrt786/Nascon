@@ -38,9 +38,6 @@ const navOptions = {
       path: '/sponsor-events',
       label: 'Browse Packages' 
     },
-    {
-      path : '/Sponsored-events', label: 'Sponsored Events'
-    },
 
     { 
       path: '/sponsor/payments',
