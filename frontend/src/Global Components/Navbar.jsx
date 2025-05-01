@@ -34,12 +34,19 @@ const navOptions = {
     {
       path: '/home', label: 'Home'
     },
-    {
-      path: '/sponsor-events', label: 'Events'
+    { 
+      path: '/sponsor-events',
+      label: 'Browse Packages' 
     },
     {
       path : '/Sponsored-events', label: 'Sponsored Events'
-    }
+    },
+
+    { 
+      path: '/sponsor/payments',
+      label: 'My Payments' 
+    },
+
   ]
 };
 
