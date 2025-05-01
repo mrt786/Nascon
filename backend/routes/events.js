@@ -19,13 +19,15 @@ router.get('/get-event-details', async (req, res) => {
         d.event_description, 
         d.max_participants, 
         e.category,
-        v.venue_id,
-        v.event_date AS venue_date,
-        v.start_time,
-        v.end_time
+        ev.venue_id,
+        v.venue_name,
+        ev.event_date AS venue_date,
+        ev.start_time,
+        ev.end_time
       FROM nascon_events e
       JOIN event_details d ON e.event_id = d.event_id
-      LEFT JOIN event_venues v ON e.event_id = v.event_id
+      LEFT JOIN event_venues ev ON e.event_id = ev.event_id
+      LEFT JOIN venues v ON ev.venue_id = v.venue_id
       WHERE d.approved = 1`
     );
 
