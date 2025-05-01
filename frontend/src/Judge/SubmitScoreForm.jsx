@@ -49,8 +49,8 @@ const SubmitScoreForm = () => {
       <div className="bg-slate-900 p-8 rounded-xl shadow max-w-lg w-full">
         <h2 className="text-2xl font-bold mb-4 text-center text-orange-500">Submit Score</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
-          <InputBox type="number" bname="user_id" bvalue={userId} change={(e)=>setUserId(e.target.value)} placeholder="User ID (individual)" />
-          <InputBox type="text"   bname="team_name"bvalue={teamName}change={(e)=>setTeamName(e.target.value)}    placeholder="Team Name (team)" />
+          <InputBox type="number" bname="user_id" bvalue={userId} change={(e)=>setUserId(e.target.value)} placeholder="User ID (individual)" category = {false}/>
+          <InputBox type="text"   bname="team_name"bvalue={teamName}change={(e)=>setTeamName(e.target.value)}    placeholder="Team Name (team)" category = {false}/>
           <InputBox type="number" bname="score"    bvalue={score}   change={(e)=>setScore(e.target.value)}        placeholder="Score" />
 
           <div>

@@ -24,8 +24,7 @@ const navOptions = {
   event_organizer:[
     { path: '/home', label: 'Home' },
     { path: '/organize-events', label: 'Organize Event' },
-    { path: '/event-organizer/approved-events', label: 'Approved' },
-    { path: '/pending-events', label: 'Pending Events' }
+    { path: '/event-organizer/approved-events', label: 'My Events' },
 
   ],
   sponsor: [

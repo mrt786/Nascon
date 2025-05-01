@@ -5,6 +5,7 @@ import Navbar from '../Global Components/Navbar';
 import { validatePassword } from '../utils/auth';
 import { validatePhone } from '../utils/auth';
 import { useNavigate } from 'react-router-dom';
+import { getUserRole } from '../utils/auth';
 import axios from 'axios';
 
 const AdminCreateUser = () => {
@@ -66,6 +67,16 @@ const AdminCreateUser = () => {
         setValidationError('Something went wrong. Please try again.');
       }
     }
+    const checkrole = () =>{
+      const role = getUserRole(); // Assuming you have a function to get the user role
+      if (role === 'admin')
+      {
+        return true;
+      } 
+      else{
+        return false;
+      }
+    };
   };
 
   return (
