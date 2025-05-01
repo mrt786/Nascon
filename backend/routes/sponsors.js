@@ -67,7 +67,7 @@ router.post('/select-package', auth, async (req, res) => {
 
     // 3) create a payment link
     const [event_sponsor] = await db.query(
-      'INSERT INTO event_sponsors (event_id, sponsor_id, payment_id, sponsor_level) VALUES (?, ?, ?, ?)',[event_id, sponsor_id, payment_id, sponsor_level]);
+      'INSERT INTO event_sponsors (event_id, sponsor_id, payment_id) VALUES (?, ?, ?)',[event_id, sponsor_id, payment_id]);
 
     res.send({
       message: 'Package reserved; complete payment to finalize sponsorship.',
