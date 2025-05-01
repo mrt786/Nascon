@@ -5,7 +5,6 @@ const venues = [
   { venue_name: "C-410", capacity: 120, location: "C Block" },
   { venue_name: "Auditorium", capacity: 300, location: "A Block" },
   { venue_name: "MEDC", capacity: 60, location: "A Block" },
-  { venue_name: "MEDC", capacity: 60, location: "C Block" },
   { venue_name: "CS Lawn", capacity: 500, location: "CS Lawn" },
   { venue_name: "Cricket Ground", capacity: 400, location: "Cricket Ground" },
   { venue_name: "Cafeteria", capacity: 200, location: "Cafeteria" },

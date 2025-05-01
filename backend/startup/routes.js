@@ -1,4 +1,3 @@
-const home = require('../routes/home');
 const error = require('../middleware/error');
 const express = require('express');
 

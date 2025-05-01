@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../config/db');
+const db = require('../startup/db');
 const auth = require('../middleware/auth');
 
 // GET all events a judge is assigned to
