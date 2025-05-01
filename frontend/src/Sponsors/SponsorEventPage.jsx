@@ -37,7 +37,7 @@ const SponsorEventPage = () => {
       );
       const { payment_id } = res.data;
       console.log("Navigating to payment page with payment_id:");
-      navigate(`/sponsor/pay/${payment_id}`, { state: { event_id: eventId, sponsor_level: sponsorLevel } });
+      navigate(`/sponsor/payments`, { state: { event_id: eventId, sponsor_level: sponsorLevel } });
     } catch (err) {
       alert(err.response?.data?.error || 'Package selection failed.');
     }

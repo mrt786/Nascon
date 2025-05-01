@@ -27,7 +27,20 @@ const SponsorPaymentsPage = () => {
   useEffect(() => { fetchPayments(); }, []);
 
   const handlePay = (paymentId, eventId, sponsorLevel) => {
-    navigate(`/sponsor/pay/${paymentId}`, { state: { event_id: eventId, sponsor_level: sponsorLevel } });
+    try {
+      const token = localStorage.getItem('token');
+      const res = axios.post('http://localhost:3000/sponsors/pay', 
+        { payment_id: paymentId , event_id:  eventId, sponsor_level: sponsorLevel}, 
+        
+        {headers: { Authorization: `${token}` }
+      });
+      console.log(res.data);
+      window.location.reload();
+      alert('Payment successful!');
+
+    } catch (err) {
+      alert(err.response?.data?.error || 'Payment failed.');
+    }
   };
 
   return (
@@ -38,7 +51,7 @@ const SponsorPaymentsPage = () => {
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
         <div className="space-y-4">
           {payments.map(p => (
-            <div key={p.payment_id} className="bg-white text-slate-900 rounded-xl shadow p-4 flex justify-between items-center">
+            <div key={p.payment_id} className="bg-slate-900 text-white rounded-xl shadow p-4 flex justify-between items-center">
               <div>
                 <p>Payment ID: {p.payment_id}</p>
                 <p>Event: {p.event_name}</p>

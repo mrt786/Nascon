@@ -104,8 +104,7 @@ router.get('/payments', auth, async (req, res) => {
          ON es.event_id = p.event_id
        JOIN event_details d 
          ON es.event_id = d.event_id
-       WHERE es.sponsor_id = ?
-       AND sp.payment_status = false`,
+       WHERE es.sponsor_id = ?`,
       [sponsor_id]
     );
     res.send(rows);

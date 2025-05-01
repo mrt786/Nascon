@@ -11,7 +11,6 @@ import PendingEventsPage from './Admin/PendingEvents.jsx';
 import SponsorEventPage from './Sponsors/SponsorEventPage.jsx';
 import ApprovedEventsPage from './Global Components/Events.jsx'
 import SponsorPaymentsPage from './Sponsors/SponsorPaymentPage.jsx';
-import SponsorPaymentForm from './Sponsors/SponsorPaymentForm.jsx';
 export default function App() {
   return (
     <Router>
@@ -32,14 +31,9 @@ export default function App() {
         <Route path="/events" element={<ApprovedEventsPage/>} />
         <Route path = '/sponsor-events' element = {<SponsorEventPage/>} />
         <Route path="/sponsor/payments"       element={<SponsorPaymentsPage />} />
-        <Route path="/sponsor/pay/:paymentId" element={<SponsorPaymentForm />} />
         <Route path="*" element={<p>Page not found</p>} />
-{/* // // Add routes to App.jsx:
-// // <Route path="/sponsor/approved-events" element={<SponserEventPage />} />
-// // <Route path="/sponsor/payments" element={<SponsorPaymentsPage />} />
-// // <Route path="/sponsor/pay/:paymentId" element={<SponsorPaymentForm />} /> */}
-
       </Routes>
     </Router>
-  );
-}
+  )
+};
+
