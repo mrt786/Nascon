@@ -64,9 +64,11 @@ router.post('/select-package', auth, async (req, res) => {
     );
     const payment_id = payResult.insertId;
 
-    // 3) store the chosen event_id & sponsor_level in a temp table or return it to client
-    //    (we need event_id when they pay later)
-    //    Let's return event_id & sponsor_level alongside payment_id
+
+    // 3) create a payment link
+    const [event_sponsor] = await db.query(
+      'INSERT INTO event_sponsors (event_id, sponsor_id, payment_id, sponsor_level) VALUES (?, ?, ?, ?)',[event_id, sponsor_id, payment_id, sponsor_level]);
+
     res.send({
       message: 'Package reserved; complete payment to finalize sponsorship.',
       payment_id,
@@ -102,7 +104,8 @@ router.get('/payments', auth, async (req, res) => {
          ON es.event_id = p.event_id
        JOIN event_details d 
          ON es.event_id = d.event_id
-       WHERE es.sponsor_id = ?`,
+       WHERE es.sponsor_id = ?
+       AND sp.payment_status = false`,
       [sponsor_id]
     );
     res.send(rows);
@@ -139,12 +142,6 @@ router.post('/pay', auth, async (req, res) => {
     await db.query(
       'UPDATE sponsor_payments SET payment_status = true WHERE payment_id = ?',
       [payment_id]
-    );
-
-    // 3) insert into event_sponsors to finalize the sponsorship
-    await db.query(
-      'INSERT INTO event_sponsors (event_id, sponsor_id, payment_id, sponsor_level) VALUES (?, ?, ?, ?)',
-      [event_id, sponsor_id, payment_id, sponsor_level]
     );
 
     res.send({ message: 'Payment successful and sponsorship confirmed.' });
