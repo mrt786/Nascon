@@ -73,6 +73,3 @@ const ParticipantPaymentForm = () => {
 };
 
 export default ParticipantPaymentForm;
-
-// Route to add in App.jsx:
-// <Route path="/participant/payment/:eventId" element={<ParticipantPaymentForm />} />

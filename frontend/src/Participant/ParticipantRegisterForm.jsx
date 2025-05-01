@@ -40,7 +40,7 @@ const ParticipantRegisterForm = () => {
         { headers: { Authorization: token } }
       );
       alert('Registered successfully! Proceed to payment.');
-      navigate(`/participant/payments/${eventId}`, { state: { event } });
+      navigate(`/participant/payment/${eventId}`, { state: { event } });
     } catch (err) {
       setError(err.response?.data?.error || 'Registration failed. You may have already registered for this event.');
     }

@@ -11,8 +11,8 @@ const navOptions = {
   ],
   judge: [
     { path: '/home', label: 'Home' },
-    { path: '/judge-events', label: 'My Events' },
-    { path: '/judge-score', label: 'Score Participants' },
+    { path: '/judge/my-events', label: 'My Events' },
+    { path: '/judge/assign-event', label: 'Assign to Event' },
   ],
   participant: [
     { path: '/home', label: 'Home' },

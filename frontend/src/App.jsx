@@ -14,6 +14,9 @@ import SponsorPaymentsPage from './Sponsors/SponsorPaymentPage.jsx';
 import ApprovedEventsByOrganizor from './Event Organizor/ApprovedEventsByOrganizor.jsx';
 import ParticipantRegisterForm from './Participant/ParticipantRegisterForm.jsx';
 import ParticipantPaymentForm from './Participant/ParticipantPayment.jsx';
+import JudgeAssignedEvents from './Judge/JudgeAssignedEvent.jsx';
+import AssignToEventForm from './Judge/JudgeAssignToEventForm.jsx';
+import SubmitScoreForm from './Judge/SubmitScoreForm.jsx';
 export default function App() {
   return (
     <Router>
@@ -33,12 +36,15 @@ export default function App() {
         <Route path="/" element={<Login role={ "participant"} />} />
         <Route path="/events" element={<ApprovedEventsPage/>} />
         <Route path = '/sponsor-events' element = {<SponsorEventPage/>} />
-        <Route path="/sponsor/payments"       element={<SponsorPaymentsPage />} />
+        <Route path="/sponsor/payments"  element={<SponsorPaymentsPage />} />
         <Route path= '/event-organizer/approved-events' element = {<ApprovedEventsByOrganizor/>} />
         <Route path="*" element={<p>Page not found</p>} />
         <Route path="/participant/register/:eventId"  element={<ParticipantRegisterForm />}/>
-        <Route path="/participant/payments/:eventId" element={<ParticipantPaymentForm />}/>
-/>
+        <Route path="/participant/payment/:eventId" element={<ParticipantPaymentForm />}/>
+        <Route path="/judge/my-events"            element={<JudgeAssignedEvents/>} />
+        <Route path="/judge/assign-event"        element={<AssignToEventForm />} />
+        <Route path="/judge/submit-score/:eventId" element={<SubmitScoreForm />} />
+
       </Routes>
     </Router>
   )
