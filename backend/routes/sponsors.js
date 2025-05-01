@@ -113,13 +113,13 @@ router.get('/payments', auth, async (req, res) => {
 });
 
 // Sponsors only: pay for a pending payment
-router.post('/pay/:payment_id', auth, async (req, res) => {
+router.post('/pay', auth, async (req, res) => {
   if (req.user.role !== 'sponsor') {
     return res.status(403).send({ error: 'Access denied. Only sponsors can pay.' });
   }
 
   const sponsor_id = req.user.user_id;
-  const { payment_id } = req.params;
+  const { payment_id } = req.body;
   // Expect client to send back event_id & sponsor_level for this payment:
   const { event_id, sponsor_level } = req.body;
   if (!event_id || !sponsor_level) {
