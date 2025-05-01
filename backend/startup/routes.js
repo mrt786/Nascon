@@ -12,5 +12,6 @@ module.exports = function(app) {
   app.use('/event-organizer', require('../routes/event_organizer'));
   app.use('/admin', require('../routes/admin'));
   app.use('/participant', require('../routes/participants'));
+  app.use('/judge', require('../routes/judges'));
   app.use(error);
 };

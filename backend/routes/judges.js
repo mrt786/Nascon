@@ -61,3 +61,44 @@ router.post('/submit-score', auth, async (req, res) => {
     res.status(500).send({ error: 'Failed to submit score.' });
   }
 });
+
+
+// POST: Judge registers themselves to judge an event
+router.post('/assign-to-event', auth, async (req, res) => {
+    const judgeId = req.user.id;
+  
+    if (req.user.role !== 'judge') {
+      return res.status(403).send({ error: 'Access denied. Judges only.' });
+    }
+  
+    const { event_id } = req.body;
+  
+    if (!event_id) {
+      return res.status(400).send({ error: 'Event ID is required.' });
+    }
+  
+    try {
+      // Check if already assigned
+      const [existing] = await db.query(
+        `SELECT * FROM event_judges WHERE event_id = ? AND judge_id = ?`,
+        [event_id, judgeId]
+      );
+  
+      if (existing.length > 0) {
+        return res.status(400).send({ error: 'You are already assigned to this event.' });
+      }
+  
+      // Insert assignment
+      await db.query(
+        `INSERT INTO event_judges (event_id, judge_id) VALUES (?, ?)`,
+        [event_id, judgeId]
+      );
+  
+      res.send({ message: 'You have been assigned to judge the event.' });
+    } catch (err) {
+      console.error(err);
+      res.status(500).send({ error: 'Failed to assign judge to event.' });
+    }
+  });
+
+module.exports = router;
