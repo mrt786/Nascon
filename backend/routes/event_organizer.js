@@ -48,22 +48,22 @@ router.get('/my-events', auth, async (req, res) => {
     try {
       const [events] = await db.query(
         `SELECT 
-           e.event_id,
-           d.event_name,
-           d.event_date AS scheduled_date,
-           d.registration_fee,
-           d.current_round,
-           d.approved,
-           v.venue_id,
-           vn.name AS venue_name,
-           ev.event_date AS venue_date,
-           ev.start_time,
-           ev.end_time
-         FROM nascon_events e
-         JOIN event_details d ON e.event_id = d.event_id
-         LEFT JOIN event_venues ev ON e.event_id = ev.event_id
-         LEFT JOIN venues vn ON ev.venue_id = vn.venue_id
-         WHERE e.user_id = ?`,
+          e.event_id,
+          d.event_name,
+          d.event_date AS scheduled_date,
+          d.registration_fee,
+          d.current_round,
+          d.approved,
+          ev.venue_id,
+          v.venue_name,
+          ev.event_date AS venue_date,
+          ev.start_time,
+          ev.end_time
+      FROM nascon_events e
+      JOIN event_details d ON e.event_id = d.event_id
+      LEFT JOIN event_venues ev ON e.event_id = ev.event_id
+      LEFT JOIN venues v ON ev.venue_id = v.venue_id
+      WHERE e.user_id = ?;`,
         [user.id]
       );
   

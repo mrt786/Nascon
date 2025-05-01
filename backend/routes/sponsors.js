@@ -43,7 +43,7 @@ router.post('/select-package', auth, async (req, res) => {
   }
 
   const { event_id, sponsor_level } = req.body;
-  const sponsor_id = req.user.user_id;
+  const sponsor_id = req.user.id;
 
   if (!event_id || !sponsor_level) {
     return res.status(400).send({ error: 'event_id and sponsor_level are required.' });
@@ -87,7 +87,7 @@ router.get('/payments', auth, async (req, res) => {
     return res.status(403).send({ error: 'Access denied. Only sponsors can view payments.' });
   }
 
-  const sponsor_id = req.user.user_id;
+  const sponsor_id = req.user.id;
   try {
     const [rows] = await db.query(
       `SELECT 
@@ -120,7 +120,7 @@ router.post('/pay', auth, async (req, res) => {
     return res.status(403).send({ error: 'Access denied. Only sponsors can pay.' });
   }
 
-  const sponsor_id = req.user.user_id;
+  const sponsor_id = req.user.id;
   const { payment_id } = req.body;
   // Expect client to send back event_id & sponsor_level for this payment:
   const { event_id, sponsor_level } = req.body;
