@@ -6,11 +6,14 @@ import AdminCreateUser from './Admin/AdminCreateUser.jsx';
 import AccommodationPage from './Global Components/Accommodation.jsx';
 import HomePage from './Global Components/Home.jsx';
 import BookingForm from './Global Components/BookingForm.jsx';
-import OrganizeEvent from './Global Components/OrganizeEvent.jsx';
+import OrganizeEvent from './Event Organizor/OrganizeEvent.jsx';
 import PendingEventsPage from './Admin/PendingEvents.jsx';
 import SponsorEventPage from './Sponsors/SponsorEventPage.jsx';
 import ApprovedEventsPage from './Global Components/Events.jsx'
 import SponsorPaymentsPage from './Sponsors/SponsorPaymentPage.jsx';
+import ApprovedEventsByOrganizor from './Event Organizor/ApprovedEventsByOrganizor.jsx';
+import ParticipantRegisterForm from './Participant/ParticipantRegisterForm.jsx';
+import ParticipantPaymentForm from './Participant/ParticipantPayment.jsx';
 export default function App() {
   return (
     <Router>
@@ -31,7 +34,11 @@ export default function App() {
         <Route path="/events" element={<ApprovedEventsPage/>} />
         <Route path = '/sponsor-events' element = {<SponsorEventPage/>} />
         <Route path="/sponsor/payments"       element={<SponsorPaymentsPage />} />
+        <Route path= '/event-organizer/approved-events' element = {<ApprovedEventsByOrganizor/>} />
         <Route path="*" element={<p>Page not found</p>} />
+        <Route path="/participant/register/:eventId"  element={<ParticipantRegisterForm />}/>
+        <Route path="/participant/payments/:eventId" element={<ParticipantPaymentForm />}/>
+/>
       </Routes>
     </Router>
   )

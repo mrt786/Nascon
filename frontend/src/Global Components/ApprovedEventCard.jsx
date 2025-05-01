@@ -1,11 +1,30 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import LoginButton from './LoginButton';
+import { useNavigate } from 'react-router-dom';
+import { getUserRole } from '../utils/auth';
+import SimpleButton from './SimpleButton';
 
 const ApprovedEventCard = ({ event, onAction }) => {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const userRole = getUserRole();
+  const navigate = useNavigate();
+  const checkUserRole = () => {
+    if (userRole === 'participant') {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
 
+  const handleRegisterClick = () => {
+    if (!checkUserRole()) {
+      alert('You are not authorized to register for this event. Please log in as a participant.');
+      return;
+    }
+    navigate(
+      `/participant/register/${event.event_id}`,
+      { state: { event } }
+    );
+  };
   return (
     <div className="group relative border rounded-lg shadow-md p-4 transition-all duration-300 bg-slate-900 hover:bg-slate-950-100 cursor-pointer">
   {/* Basic Info (always visible) */}
@@ -24,9 +43,11 @@ const ApprovedEventCard = ({ event, onAction }) => {
     <p><strong>Description:</strong> {event.event_description}</p>
 
     {/* Register Event Button */}
-    <div className='my-4'>
-      <LoginButton text = "Register"  btype = 'submit' />
+    {checkUserRole() && 
+      <div className='my-4'>
+      <SimpleButton text = "Register" onClick={handleRegisterClick} width='w-full' />
     </div>
+    }
   </div>
 </div>
   );

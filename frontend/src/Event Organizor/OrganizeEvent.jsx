@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Navbar from './Navbar';
+import Navbar from '../Global Components/Navbar';
 import { getUserRole } from '../utils/auth';
-import InputBox from './InputBox';
-import LoginButton from './LoginButton';
+import InputBox from '../Global Components/InputBox';
+import LoginButton from '../Global Components/LoginButton';
 
 const OrganizeEvent = () => {
   const navigate = useNavigate();
