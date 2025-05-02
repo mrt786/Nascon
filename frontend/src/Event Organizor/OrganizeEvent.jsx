@@ -6,6 +6,7 @@ import { getUserRole } from '../utils/auth';
 import InputBox from '../Global Components/InputBox';
 import LoginButton from '../Global Components/LoginButton';
 import { motion } from 'framer-motion';
+import AnimatedForm from '../Animations/AnimatedForms';
 const OrganizeEvent = () => {
   const navigate = useNavigate();
   const userRole = getUserRole();
@@ -74,8 +75,8 @@ const OrganizeEvent = () => {
       <Navbar role={userRole} />
 
       <div className="flex items-center justify-center py-10 px-4">
-        <div className="bg-slate-900 text-black rounded-2xl shadow-xl p-8 w-full max-w-lg">
-          <h2 className="text-2xl font-bold mb-6 text-center text-orange-500">Organize Event</h2>
+        <AnimatedForm>
+        <h2 className="text-2xl font-bold mb-6 text-center text-orange-500">Organize Event</h2>
           <form onSubmit={handleSubmit} className="space-y-4">
             <motion.select
                 initial={{ opacity: 0, y: 10 }}
@@ -160,7 +161,7 @@ const OrganizeEvent = () => {
 
             <LoginButton text="Submit Event" btype="submit" />
           </form>
-        </div>
+        </AnimatedForm>
       </div>
     </div>
   );

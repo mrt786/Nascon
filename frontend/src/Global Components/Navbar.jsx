@@ -63,8 +63,8 @@ const Navbar = ({ role }) => {
           initial={{ y: -80 }}
           animate={{ y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className={`fixed top-0 w-full z-50  ${
-             'bg-slate-900 shadow-md' 
+          className={`fixed top-0 w-full z-50 transition-colors duration-500 ${
+             isScrolled ? 'bg-slate-900 shadow-md' : 'bg-transparent'
           } transition-colors duration-500`}
         >
           <div className="container mx-auto px-4 py-3 flex items-center bg-slate-900">

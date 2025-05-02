@@ -5,6 +5,7 @@ import Navbar from '../Global Components/Navbar';
 import InputBox from '../Global Components/InputBox';
 import SimpleButton from '../Global Components/SimpleButton';
 import { getUserRole } from '../utils/auth';
+import AnimatedForm from '../Animations/AnimatedForms';
 
 const SubmitScoreForm = () => {
   const { eventId } = useParams();
@@ -46,8 +47,8 @@ const SubmitScoreForm = () => {
 
   return (
     <div className="bg-slate-800 min-h-screen text-white flex items-center justify-center">
-      <div className="bg-slate-900 p-8 rounded-xl shadow max-w-lg w-full">
-        <h2 className="text-2xl font-bold mb-4 text-center text-orange-500">Submit Score</h2>
+      <AnimatedForm>
+      <h2 className="text-2xl font-bold mb-4 text-center text-orange-500">Submit Score</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <InputBox type="number" bname="user_id" bvalue={userId} change={(e)=>setUserId(e.target.value)} placeholder="User ID (individual)" category = {false}/>
           <InputBox type="text"   bname="team_name"bvalue={teamName}change={(e)=>setTeamName(e.target.value)}    placeholder="Team Name (team)" category = {false}/>
@@ -76,7 +77,7 @@ const SubmitScoreForm = () => {
           {message && <p className="text-green-500">{message}</p>}
           <SimpleButton text="Submit" type="submit" width="w-full" />
         </form>
-      </div>
+      </AnimatedForm>
     </div>
   );
 };
