@@ -12,6 +12,22 @@ router.post('/approve-event', auth, async (req, res) => {
     return res.status(403).send({ error: 'Access denied. Only admins can approve events.' });
   }
 
+  //first check if the event is already approved
+  try {
+    const [existingEvent] = await db.query(
+      'SELECT approved FROM event_details WHERE event_id = ?',
+      [event_id]
+    );
+
+    if (existingEvent.approved === 1) {
+      return res.status(400).send({ error: 'Event already approved.' });
+    }
+  }
+  catch (err) {
+    console.error(err);
+    return res.status(500).send({ error: 'Failed to check event status.' });
+  }
+
   try {
     const [result] = await db.query(
       'UPDATE event_details SET approved = 1 WHERE event_id = ?',
@@ -22,12 +38,37 @@ router.post('/approve-event', auth, async (req, res) => {
       return res.status(404).send({ error: 'Event not found.' });
     }
 
-    res.send({ message: 'Event approved successfully.' });
+    
+    const [eventDetails] = await db.query(
+      'SELECT max_participants FROM event_details WHERE event_id = ?',
+      [event_id]
+    );
+
+    const [userDetails] = await db.query(
+      'SELECT user_id FROM nascon_events WHERE event_id = ?',
+      [event_id]
+    );
+    
+    const user_id = userDetails[0].user_id
+    const max_participants = eventDetails[0].max_participants;
+
+    // schedule the event after admin approval
+    try{
+      // hard coded nascon start and end dates
+      const [scheduingResult] = await db.query('call auto_schedule_event(?, ?, ?, ?, ?)', [user_id, event_id, max_participants, '2025-05-02', '2025-05-04']);
+    }
+    catch(err){
+      console.error(err);
+      return res.status(500).send({ error: 'Failed to schedule event. Call the scheduling function manually now.' });
+    }
+
+    res.send({ message: 'Event approved and scheduled successfully.' });
   } catch (err) {
     console.error(err);
     res.status(500).send({ error: 'Failed to approve event.' });
   }
 });
+
 
 // Reject an event (only for admins)
 router.delete('/reject-event-by-admin/:event_id', auth, async (req, res) => {
