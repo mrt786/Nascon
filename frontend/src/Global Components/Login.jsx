@@ -4,6 +4,7 @@ import LoginButton from './LoginButton';
 import { useNavigate } from 'react-router-dom';
 import RoleSelector from './RoleSelection';
 import axios from 'axios';
+import PageWrapper from '../Animations/PageFadeIn';
 
 const Login = ({ role }) => {
   const navigate = useNavigate();
@@ -39,7 +40,8 @@ const Login = ({ role }) => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-800 text-white">
+    <PageWrapper>
+      <div className="min-h-screen flex items-center justify-center bg-slate-800 text-white">
       <div className="bg-slate-900 rounded-2xl shadow-xl p-8 w-[350px] text-center relative">
         <h2 className="text-2xl font-bold mb-4 text-orange-500 capitalize">
           {role} Login Form
@@ -85,6 +87,7 @@ const Login = ({ role }) => {
         )}
       </div>
     </div>
+    </PageWrapper>
   );
 };
 

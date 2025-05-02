@@ -7,6 +7,7 @@ import LoginButton from '../Global Components/LoginButton';
 import axios from 'axios';
 import { validatePassword } from '../utils/auth';
 import { validatePhone } from '../utils/auth';
+import PageWrapper from '../Animations/PageFadeIn';
 
 
 const ParticipantAuth = () => {
@@ -79,6 +80,7 @@ const handleSubmit = async (e) => {
 
       alert('Login successful!');
       navigate('/home'); // change the route to home
+      
     }
   } catch (error) 
   {
@@ -92,7 +94,8 @@ const handleSubmit = async (e) => {
 };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-800 text-white">
+   <PageWrapper>
+     <div className="min-h-screen flex items-center justify-center bg-slate-800 text-white">
       <div className="bg-slate-900 rounded-2xl shadow-xl p-8 w-[350px] text-center">
         <h2 className="text-2xl font-bold mb-4 text-orange-500">
           {activeTab === 'login'
@@ -186,6 +189,7 @@ const handleSubmit = async (e) => {
         </div>
       </div>
     </div>
+   </PageWrapper>
   );
 };
 
