@@ -5,6 +5,7 @@ import Navbar from './Navbar';
 import { getUserRole } from '../utils/auth';
 import LoginButton from './LoginButton';
 import InputBox from './InputBox';
+import AnimatedForm from '../Animations/AnimatedForms';
 const BookingForm = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
@@ -84,8 +85,8 @@ const BookingForm = () => {
 
       <Navbar role={userRole} />
       <div className="min-h-screen flex items-center justify-center bg-slate-800 text-white">
-      <div className="bg-slate-900 rounded-2xl shadow-xl p-8 w-[380px] text-center">
-        <h2 className="text-2xl font-bold mb-4 text-center text-orange-500 capitalize ">Confirm Booking</h2>
+      <AnimatedForm>
+      <h2 className="text-2xl font-bold mb-4 text-center text-orange-500 capitalize ">Confirm Booking</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* <div> */}
           
@@ -123,7 +124,7 @@ const BookingForm = () => {
           {error && <p className="text-red-600">{error}</p>}
           <LoginButton text = {"Proceed to Payment"} btype = {"Submit"} />
         </form>
-      </div>
+      </AnimatedForm>
       </div>
     </div>
   );

@@ -7,6 +7,8 @@ import LoginButton from '../Global Components/LoginButton';
 import axios from 'axios';
 import { validatePassword } from '../utils/auth';
 import { validatePhone } from '../utils/auth';
+import PageWrapper from '../Animations/PageFadeIn';
+import AnimatedForm from '../Animations/AnimatedForms';
 
 
 const ParticipantAuth = () => {
@@ -79,6 +81,7 @@ const handleSubmit = async (e) => {
 
       alert('Login successful!');
       navigate('/home'); // change the route to home
+      
     }
   } catch (error) 
   {
@@ -92,100 +95,102 @@ const handleSubmit = async (e) => {
 };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-800 text-white">
-      <div className="bg-slate-900 rounded-2xl shadow-xl p-8 w-[350px] text-center">
-        <h2 className="text-2xl font-bold mb-4 text-orange-500">
-          {activeTab === 'login'
-            ? 'Participant Login Form'
-            : 'Participant Signup Form'}
-        </h2>
-        <AuthToggle
-          activeTab={activeTab}
-          setActiveTab={handleTabChange}
-          tabname="participant"
-        />
-
-        <form onSubmit={handleSubmit} className="space-y-3">
-         {activeTab === 'login' && ( <RoleSelector />)}
-
-          {activeTab === 'signup' && (
-            <>
-              <InputBox
-                type="text"
-                placeholder="First Name"
-                value={firstName}
-                change ={(e) => setFirstName(e.target.value)}
-              />
-              <InputBox
-                type="text"
-                placeholder="Last Name"
-                value={lastName}
-                change ={(e) => setLastName(e.target.value)}
-              />
-              <InputBox
-                type="number"
-                placeholder="Phone Number"
-                value={phoneNumber}
-                change ={(e) => setPhoneNumber(e.target.value)}
-              />
-            </>
-          )}
-
-          <InputBox
-            type="email"
-            placeholder="Email Address"
-            value={email}
-            change ={(e) => setEmail(e.target.value)}
+   <PageWrapper>
+     <div className="min-h-screen flex items-center justify-center bg-slate-800 text-white">
+      <AnimatedForm>
+          <h2 className="text-2xl font-bold mb-4 text-orange-500">
+            {activeTab === 'login'
+              ? 'Participant Login Form'
+              : 'Participant Signup Form'}
+          </h2>
+          <AuthToggle
+            activeTab={activeTab}
+            setActiveTab={handleTabChange}
+            tabname="participant"
           />
-          <div className="relative">
-              <InputBox
-                type={showPassword ? 'text' : 'password'} // Toggle between text and password
-                bname='password'
-                bvalue={password}
-                change={(e) => setPassword(e.target.value)}
-                placeholder='Your Password'
-              />
-              <button
-                type="button"
-                onClick={handlePasswordToggle}
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 text-slate-500"
-              >
-                {showPassword ? 'Hide' : 'Show'} {/* Button text */}
-              </button>
-            </div>
 
-          {validationError && (
-            <p className="text-red-600 text-sm text-left">
-              {validationError}
-            </p>
-          )}
+          <form onSubmit={handleSubmit} className="space-y-3">
+          {activeTab === 'login' && ( <RoleSelector />)}
 
-          {activeTab === 'login' && (
-            <div className="text-right text-sm">
-              <Link
-                to="#"
-                className="text-blue-700 focus:outline-none focus:ring-2 focus:ring-pink-500"
-              >
-                Forgot password?
-              </Link>
-            </div>
-          )}
+            {activeTab === 'signup' && (
+              <>
+                <InputBox
+                  type="text"
+                  placeholder="First Name"
+                  value={firstName}
+                  change ={(e) => setFirstName(e.target.value)}
+                />
+                <InputBox
+                  type="text"
+                  placeholder="Last Name"
+                  value={lastName}
+                  change ={(e) => setLastName(e.target.value)}
+                />
+                <InputBox
+                  type="number"
+                  placeholder="Phone Number"
+                  value={phoneNumber}
+                  change ={(e) => setPhoneNumber(e.target.value)}
+                />
+              </>
+            )}
 
-          <LoginButton
-            text={activeTab === 'login' ? 'Login' : 'Signup'}
-            type="submit"
-            btype="submit"
-          />
-        </form>
-        <div className="mt-4 text-sm text-slate-600">
-          {activeTab === 'login' ? (
-            <>Not a member? <span onClick={() => handleTabChange('signup')} className="text-blue-700 cursor-pointer">Signup now</span></>
-          ) : (
-            <>Already have an account? <span onClick={() => handleTabChange('login')} className="text-blue-700 cursor-pointer">Login</span></>
-          )}
-        </div>
-      </div>
+            <InputBox
+              type="email"
+              placeholder="Email Address"
+              value={email}
+              change ={(e) => setEmail(e.target.value)}
+            />
+            <div className="relative">
+                <InputBox
+                  type={showPassword ? 'text' : 'password'} // Toggle between text and password
+                  bname='password'
+                  bvalue={password}
+                  change={(e) => setPassword(e.target.value)}
+                  placeholder='Your Password'
+                />
+                <button
+                  type="button"
+                  onClick={handlePasswordToggle}
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 text-slate-500"
+                >
+                  {showPassword ? 'Hide' : 'Show'} {/* Button text */}
+                </button>
+              </div>
+
+            {validationError && (
+              <p className="text-red-600 text-sm text-left">
+                {validationError}
+              </p>
+            )}
+
+            {activeTab === 'login' && (
+              <div className="text-right text-sm">
+                <Link
+                  to="#"
+                  className="text-blue-700 focus:outline-none focus:ring-2 focus:ring-pink-500"
+                >
+                  Forgot password?
+                </Link>
+              </div>
+            )}
+
+            <LoginButton
+              text={activeTab === 'login' ? 'Login' : 'Signup'}
+              type="submit"
+              btype="submit"
+            />
+          </form>
+          <div className="mt-4 text-sm text-slate-600">
+            {activeTab === 'login' ? (
+              <>Not a member? <span onClick={() => handleTabChange('signup')} className="text-blue-700 cursor-pointer">Signup now</span></>
+            ) : (
+              <>Already have an account? <span onClick={() => handleTabChange('login')} className="text-blue-700 cursor-pointer">Login</span></>
+            )}
+          </div>
+      </AnimatedForm>
     </div>
+   </PageWrapper>
   );
 };
 

@@ -5,6 +5,7 @@ import Navbar from '../Global Components/Navbar';
 import InputBox from '../Global Components/InputBox';
 import SimpleButton from '../Global Components/SimpleButton';
 import { getUserRole } from '../utils/auth';
+import AnimatedForm from '../Animations/AnimatedForms';
 
 const SubmitScoreForm = () => {
   const { eventId } = useParams();
@@ -46,8 +47,8 @@ const SubmitScoreForm = () => {
 
   return (
     <div className="bg-slate-800 min-h-screen text-white flex items-center justify-center">
-      <div className="bg-slate-900 p-8 rounded-xl shadow max-w-lg w-full">
-        <h2 className="text-2xl font-bold mb-4 text-center text-orange-500">Submit Score</h2>
+      <AnimatedForm>
+      <h2 className="text-2xl font-bold mb-4 text-center text-orange-500">Submit Score</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <InputBox type="number" bname="user_id" bvalue={userId} change={(e)=>setUserId(e.target.value)} placeholder="User ID (individual)" category = {false}/>
           <InputBox type="text"   bname="team_name"bvalue={teamName}change={(e)=>setTeamName(e.target.value)}    placeholder="Team Name (team)" category = {false}/>
@@ -55,11 +56,20 @@ const SubmitScoreForm = () => {
 
           <div>
             <label className="block mb-1">Round</label>
-            <select value={round} onChange={e=>setRound(e.target.value)} className="w-full p-2 rounded-md text-black">
-              <option value="prelims">Prelims</option>
-              <option value="semi-finals">Semi-Finals</option>
-              <option value="finals">Finals</option>
-            </select>
+            <motion.select
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  whileFocus={{ scale: 1.02, borderColor: "#D4A6A1", boxShadow: "0 0 8px #D4A6A1" }}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
+                  value={round}
+                  onChange ={e=>setRound(e.target.value)} 
+                  defaultValue=""
+                  className="w-full p-2 rounded-md text-black placeholder-slate-400  focus:outline-none focus:ring-2"
+                >
+                  <option value="prelims">Prelims</option>
+                  <option value="semi-finals">Semi-Finals</option>
+                  <option value="finals">Finals</option>
+            </motion.select>
           </div>
 
           <InputBox type="text" bname="score_comment" bvalue={comment} change={(e)=>setComment(e.target.value)} placeholder="Comment (optional)" />
@@ -67,7 +77,7 @@ const SubmitScoreForm = () => {
           {message && <p className="text-green-500">{message}</p>}
           <SimpleButton text="Submit" type="submit" width="w-full" />
         </form>
-      </div>
+      </AnimatedForm>
     </div>
   );
 };

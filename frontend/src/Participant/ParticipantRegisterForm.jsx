@@ -6,6 +6,7 @@ import Navbar from '../Global Components/Navbar';
 import InputBox from '../Global Components/InputBox';
 import SimpleButton from '../Global Components/SimpleButton';
 import { getUserRole } from '../utils/auth';
+import AnimatedForm from '../Animations/AnimatedForms';
 
 const ParticipantRegisterForm = () => {
   const { eventId } = useParams();
@@ -49,7 +50,7 @@ const ParticipantRegisterForm = () => {
   return (
     <div className="bg-slate-800 min-h-screen text-white">
       <Navbar role={userRole} />
-      <div className="max-w-md mx-auto bg-slate-900 rounded-2xl shadow-xl p-8 mt-10">
+        <AnimatedForm>
         <h2 className="text-2xl font-bold mb-4 text-orange-500 text-center">
           Register for Event
         </h2>
@@ -74,7 +75,7 @@ const ParticipantRegisterForm = () => {
             {error && <p className="text-red-500">{error}</p>}
             <SimpleButton text="Register" type="submit" width="w-full" />
         </form>
-      </div>
+        </AnimatedForm>
     </div>
   );
 };

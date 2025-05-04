@@ -5,7 +5,8 @@ import Navbar from '../Global Components/Navbar';
 import { getUserRole } from '../utils/auth';
 import InputBox from '../Global Components/InputBox';
 import LoginButton from '../Global Components/LoginButton';
-
+import { motion } from 'framer-motion';
+import AnimatedForm from '../Animations/AnimatedForms';
 const OrganizeEvent = () => {
   const navigate = useNavigate();
   const userRole = getUserRole();
@@ -74,24 +75,28 @@ const OrganizeEvent = () => {
       <Navbar role={userRole} />
 
       <div className="flex items-center justify-center py-10 px-4">
-        <div className="bg-slate-900 text-black rounded-2xl shadow-xl p-8 w-full max-w-lg">
-          <h2 className="text-2xl font-bold mb-6 text-center text-orange-500">Organize Event</h2>
+        <AnimatedForm>
+        <h2 className="text-2xl font-bold mb-6 text-center text-orange-500">Organize Event</h2>
           <form onSubmit={handleSubmit} className="space-y-4">
-            <select
+            <motion.select
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                whileFocus={{ scale: 1.02, borderColor: "#D4A6A1", boxShadow: "0 0 8px #D4A6A1" }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
                 onChange={handleChange}
+                name= "category"
                 value={formData.category}
-                name="category"
                 defaultValue=""
-                className = "w-full p-2 rounded-md text-black placeholder-slate-400 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-pink-500"        >
+                className="w-full p-2 rounded-md text-black placeholder-slate-400  focus:outline-none focus:ring-2"
+              >
                 <option value="" >Select Event Category</option>
                 <option value="tech_event">Tech Event</option>
                 <option value="business_event">Business Event</option>
                 <option value="gaming_tournament">Gaming Tournament</option>
                 <option value="general_event">General Event</option>
                 <option value="event_organizer">Event Organizer</option>
-            </select>
-
-
+            </motion.select>
+                      
             <InputBox
               type="text"
               bname="event_name"
@@ -113,17 +118,22 @@ const OrganizeEvent = () => {
               change={handleChange}
               placeholder="Registration Fee"
             />
-            <select
+                        <motion.select
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                whileFocus={{ scale: 1.02, borderColor: "#D4A6A1", boxShadow: "0 0 8px #D4A6A1" }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
                 onChange={handleChange}
                 value={formData.current_round}
                 name="current_round"
                 defaultValue=""
-                className = "w-full p-2 rounded-md text-black placeholder-slate-400 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-pink-500"        >
+                className="w-full p-2 rounded-md text-black placeholder-slate-400  focus:outline-none focus:ring-2"
+              >
                 <option value="" >Select Round Type</option>
                 <option value="prelims">PreLims</option>
                 <option value="semi-finals">Semi Final</option>
                 <option value="finals">Final</option>
-            </select>
+            </motion.select>
             <InputBox
               type="text"
               bname="rules"
@@ -151,7 +161,7 @@ const OrganizeEvent = () => {
 
             <LoginButton text="Submit Event" btype="submit" />
           </form>
-        </div>
+        </AnimatedForm>
       </div>
     </div>
   );
