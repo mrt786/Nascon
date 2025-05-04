@@ -18,10 +18,11 @@ import ParticipantRegisterForm from '../Participant/ParticipantRegisterForm.jsx'
 import ParticipantPaymentForm from '../Participant/ParticipantPayment.jsx';
 import JudgeAssignedEvents from '../Judge/JudgeAssignedEvent.jsx';
 import AssignToEventForm from '../Judge/JudgeAssignToEventForm.jsx';
-import SubmitScoreForm from '../Judge/SubmitScoreForm.jsx';
 import { toast } from 'sonner';
 import ParticipatedEvents from '../Participant/ParticipatedEvents.jsx';
 import SponsoredEventsPage from '../Sponsors/Sponsored.jsx';
+import SubmitScoreForm from '../Judge/SubmitScoreForm.jsx';
+import JudgingEventsPage from '../Judge/JudgeEvents.jsx';
 
 // Helper function to check authentication and role
 const ProtectedRoute = ({ children, allowedRole }) => {
@@ -79,6 +80,36 @@ function AnimatedRoutes() {
           }
         />
         <Route
+          path="/judge-home"
+          element={
+            <ProtectedRoute allowedRole="judge">
+              <WholePageWrapper>
+                <HomePage roles="judge" />
+              </WholePageWrapper>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/judge/my-events"
+          element={
+            <ProtectedRoute allowedRole="judge">
+              <WholePageWrapper>
+                <JudgingEventsPage/>
+              </WholePageWrapper>
+            </ProtectedRoute>
+          }
+        />
+                <Route
+          path="/judge/evaluate-events"
+          element={
+            <ProtectedRoute allowedRole="judge">
+              <WholePageWrapper>
+                <JudgeAssignedEvents />
+              </WholePageWrapper>
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/sponsor-login"
           element={
             <WholePageWrapper>
@@ -102,16 +133,6 @@ function AnimatedRoutes() {
             <ProtectedRoute allowedRole="participant">
               <WholePageWrapper>
                 <HomePage roles="participant" />
-              </WholePageWrapper>
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/judge-home"
-          element={
-            <ProtectedRoute allowedRole="judge">
-              <WholePageWrapper>
-                <HomePage roles="judge" />
               </WholePageWrapper>
             </ProtectedRoute>
           }
@@ -283,16 +304,6 @@ function AnimatedRoutes() {
             <ProtectedRoute allowedRole="participant">
               <WholePageWrapper>
                 <BookingForm />
-              </WholePageWrapper>
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/judge/my-events"
-          element={
-            <ProtectedRoute allowedRole="judge">
-              <WholePageWrapper>
-                <JudgeAssignedEvents />
               </WholePageWrapper>
             </ProtectedRoute>
           }

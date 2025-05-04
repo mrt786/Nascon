@@ -4,6 +4,7 @@ import Navbar from '../Global Components/Navbar';
 import InputBox from '../Global Components/InputBox';
 import SimpleButton from '../Global Components/SimpleButton';
 import { getUserRole } from '../utils/auth';
+import AnimatedForm from '../Animations/AnimatedForms';
 
 const AssignToEventForm = () => {
   const [eventId, setEventId] = useState('');
@@ -33,6 +34,7 @@ const AssignToEventForm = () => {
 
   return (
     <div className="bg-slate-800 min-h-screen text-white flex items-center justify-center">
+      <AnimatedForm>
       <div className="bg-slate-900 p-8 rounded-xl shadow max-w-md w-full">
         <h2 className="text-2xl font-bold mb-4 text-center text-orange-500">Assign to Event</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -48,6 +50,7 @@ const AssignToEventForm = () => {
           <SimpleButton text="Assign" type="submit" width="w-full" />
         </form>
       </div>
+      </AnimatedForm>
     </div>
   );
 };

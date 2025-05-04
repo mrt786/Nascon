@@ -40,7 +40,7 @@ const JudgeAssignedEvents = () => {
           {events.length === 0 ? (
             <p className="col-span-full text-center text-gray-300">No events assigned.</p>
           ) : events.map(ev => (
-            <div key={ev.event_id} className="bg-slate-900 p-4 rounded-lg shadow">
+            <div key={ev.event_id} className="bg-slate-900 border border-orange-500 p-4 rounded-lg shadow">
               <h2 className="text-xl font-semibold text-orange-500">{ev.event_name}</h2>
               <p>Date: {new Date(ev.event_date).toLocaleDateString()}</p>
               <p>Category: {ev.category}</p>

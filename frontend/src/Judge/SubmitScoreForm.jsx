@@ -5,6 +5,7 @@ import InputBox from '../Global Components/InputBox';
 import SimpleButton from '../Global Components/SimpleButton';
 import { getUserRole } from '../utils/auth';
 import AnimatedForm from '../Animations/AnimatedForms';
+import { motion } from 'framer-motion';
 
 const SubmitScoreForm = () => {
   const { eventId } = useParams();
