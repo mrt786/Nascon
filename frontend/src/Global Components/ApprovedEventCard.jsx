@@ -42,7 +42,7 @@ const ApprovedEventCard = ({ event, onAction }) => {
     <p><strong>Max Participants:</strong> {event.max_participants}</p>
     <p><strong>Rules:</strong> {event.rules}</p>
     <p><strong>Description:</strong> {event.event_description}</p>
-
+    <p><strong>Venue: </strong>{event.venue_name} </p>
     {/* Register Event Button */}
     {checkUserRole() && 
       <div className='my-4'>
