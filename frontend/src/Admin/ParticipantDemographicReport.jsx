@@ -1,15 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
-import Navbar from '../Global Components/Navbar';
-import { getUserRole } from '../utils/auth';
-
 const ParticipantDemographicsReport = () => {
   const [report, setReport] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const userRole = getUserRole();
-
   useEffect(() => {
     const fetchReport = async () => {
       try {
@@ -45,10 +40,8 @@ const ParticipantDemographicsReport = () => {
 
   return (
     <div className="bg-slate-800 min-h-screen text-white pt-20">
-      <Navbar role={userRole} />
-
-      <div className="max-w-6xl mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold text-center text-orange-500 mb-6">
+      <div className="max-w-6xl mx-auto px-4">
+        <h1 className="text-3xl font-bold text-center text-orange-500">
           Participant Demographics Report
         </h1>
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
