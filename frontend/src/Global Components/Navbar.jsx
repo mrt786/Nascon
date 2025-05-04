@@ -28,7 +28,8 @@ const navOptions = {
     { path: '/event_organizer-home', label: 'Home' },
     { path: '/organize-events', label: 'Organize Event' },
     { path: '/event-organizer/approved-events', label: 'My Events' },
-    {path :'/add-sponsorships-packages', label: 'Add Sponsorship'}
+    {path :'/add-sponsorships-packages', label: 'Add Sponsorship'},
+    {path :'/view-event-details', label: 'View Event Details'},
   ],
   sponsor: [
     { path: '/sponsor-home', label: 'Home' },

@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import InputBox from '../Global Components/InputBox';
 import SimpleButton from '../Global Components/SimpleButton';
 import AnimatedForm from '../Animations/AnimatedForms';
+import { toast } from 'sonner';
 
 const levels = [
   { value: 'title_sponsor', label: 'Title Sponsor' },
@@ -42,12 +43,12 @@ const AddSponsorshipPackages = () => {
     setError('');
     setSuccess('');
     if (!eventId) {
-      setError('Event ID is required.');
+      toast.error('Event ID is required.');
       return;
     }
     const valid = packages.every(p => p.sponsor_level && p.sponsor_amount > 0);
     if (!valid) {
-      setError('All packages must have a level and amount > 0.');
+      toast.error('All packages must have a level and amount > 0.');
       return;
     }
     try {
@@ -59,7 +60,7 @@ const AddSponsorshipPackages = () => {
       );
       setSuccess('Packages added successfully!');
     } catch (err) {
-      setError(err.response?.data?.error || 'Failed to add packages.');
+      toast.error(err.response?.data?.error || 'Failed to add packages.');
     }
   };
 
@@ -71,7 +72,7 @@ const AddSponsorshipPackages = () => {
     <div className="bg-slate-800 min-h-screen text-white pt-20">
       <div className="max-w-3xl mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold text-center mb-6 text-orange-500">Add Sponsorship Packages</h1>
-        <AnimatedForm>
+        {/* <AnimatedForm> */}
             <form onSubmit={handleSubmit} className="space-y-6">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -128,7 +129,7 @@ const AddSponsorshipPackages = () => {
             {error && <p className="text-red-400">{error}</p>}
             {success && <p className="text-green-400">{success}</p>}
             </form>
-        </AnimatedForm>
+        {/* </AnimatedForm> */}
       </div>
     </div>
   );
@@ -136,7 +137,3 @@ const AddSponsorshipPackages = () => {
 
 export default AddSponsorshipPackages;
 
-// In App.jsx add:
-// <Route path="/organizer/add-sponsorship" element={<AddSponsorshipPackages />} />
-// Navbar under event_organizer:
-// { path: '/organize-events', label: 'Add Sponsorships' },
