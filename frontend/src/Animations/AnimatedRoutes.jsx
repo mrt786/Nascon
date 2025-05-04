@@ -29,6 +29,7 @@ import ViewSponsorAmount from '../Event Organizer/ViewSponsorAmount.jsx';
 import SponsorIncomeReport from '../Event Organizer/SponsorIncomeReport.jsx';
 import VenueUtilizationReport from '../Admin/VenueReport.jsx';
 import FinanceReport from '../Admin/FinanceReport.jsx';
+import ParticipantDemographicsReport from '../Admin/ParticipantDemographicReport.jsx';
 
 // Helper function to check authentication and role
 const ProtectedRoute = ({ children, allowedRole }) => {
@@ -272,6 +273,16 @@ function AnimatedRoutes() {
             <ProtectedRoute allowedRole="admin">
               <WholePageWrapper>
                 <FinanceReport/>
+              </WholePageWrapper>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/demographic-report"
+          element={
+            <ProtectedRoute allowedRole="admin">
+              <WholePageWrapper>
+                <ParticipantDemographicsReport/>
               </WholePageWrapper>
             </ProtectedRoute>
           }

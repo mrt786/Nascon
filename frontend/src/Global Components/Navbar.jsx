@@ -11,7 +11,8 @@ const navOptions = {
     { path: '/approve-events', label: 'Approve Events' },
     { path: '/admin-events', label: 'Events' },
     { path: '/venue-report', label: 'Venue Report' },
-    { path: '/finance-report' , label: 'Finance Report'}
+    { path: '/finance-report' , label: 'Finance Report'},
+    { path: '/demographic-report', label: "Demographic Report"}
   ],
   judge: [
     { path: '/judge-home', label: 'Home' },
