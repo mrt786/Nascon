@@ -1,12 +1,10 @@
 import React from 'react';
 import Countdown from './Countdown';
 import Cards from './HighlightCard';
-import { getUserRole } from '../utils/auth';
 import { Section } from '../Animations/SectionScroll';
 import PageWrapper from '../Animations/PageFadeIn';
 
 const HomePage = ({ roles }) => {
-    const userRole = getUserRole(); // Get the user role from local storage or context
   return (
     <PageWrapper>
 

@@ -9,6 +9,7 @@ import { validatePassword } from '../utils/auth';
 import { validatePhone } from '../utils/auth';
 import PageWrapper from '../Animations/PageFadeIn';
 import AnimatedForm from '../Animations/AnimatedForms';
+import { toast } from 'sonner';
 
 
 const ParticipantAuth = () => {
@@ -67,7 +68,7 @@ const handleSubmit = async (e) => {
       });
 
       console.log(response.data);
-      alert('Signup successful! You can now log in.');
+      toast.success('Participant created successfully!');
       navigate('/participant-login');
     } else {
       // Call login API
@@ -79,8 +80,8 @@ const handleSubmit = async (e) => {
       const  token  = response.data.token;
       localStorage.setItem('token', token); // Save token for authentication
       localStorage.setItem('role', 'participant'); // Save role for later use
-      alert('Login successful!');
-      navigate('/home'); // change the route to home
+      toast.success('Participant Login successful!'); // Show success message
+      navigate('/participant-home'); // change the route to home
       
     }
   } catch (error) 

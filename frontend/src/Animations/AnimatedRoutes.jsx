@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useImperativeHandle } from 'react';
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import WholePageWrapper from './PageWrapper.jsx';
@@ -8,17 +8,19 @@ import AdminCreateUser from '../Admin/AdminCreateUser.jsx';
 import AccommodationPage from '../Global Components/Accommodation.jsx';
 import HomePage from '../Global Components/Home.jsx';
 import BookingForm from '../Global Components/BookingForm.jsx';
-import OrganizeEvent from '../Event Organizor/OrganizeEvent.jsx';
+import OrganizeEvent from '../Event Organizer/OrganizeEvent.jsx';
 import PendingEventsPage from '../Admin/PendingEvents.jsx';
 import SponsorEventPage from '../Sponsors/SponsorEventPage.jsx';
 import ApprovedEventsPage from '../Global Components/Events.jsx';
 import SponsorPaymentsPage from '../Sponsors/SponsorPaymentPage.jsx';
-import ApprovedEventsByOrganizor from '../Event Organizor/ApprovedEventsByOrganizor.jsx';
+import ApprovedEventsByOrganizor from '../Event Organizer/ApprovedEventsByOrganizor.jsx';
 import ParticipantRegisterForm from '../Participant/ParticipantRegisterForm.jsx';
 import ParticipantPaymentForm from '../Participant/ParticipantPayment.jsx';
 import JudgeAssignedEvents from '../Judge/JudgeAssignedEvent.jsx';
 import AssignToEventForm from '../Judge/JudgeAssignToEventForm.jsx';
 import SubmitScoreForm from '../Judge/SubmitScoreForm.jsx';
+import { toast } from 'sonner';
+import ParticipatedEvents from '../Participant/ParticipatedEvents.jsx';
 
 // Helper function to check authentication and role
 const ProtectedRoute = ({ children, allowedRole }) => {
@@ -26,10 +28,12 @@ const ProtectedRoute = ({ children, allowedRole }) => {
   const userRole = localStorage.getItem('role'); // Get the role from localStorage
 
   // If no token or the role doesn't match, redirect to the login page
+  console.log(userRole , allowedRole);
   if (!token || userRole !== allowedRole) {
-    alert('You are not authorized to access this page. Please log in.');
+    toast.error('You are not authorized to access this page. Please log in.');
     return <Navigate to={`/${userRole ? `${userRole}-login` : 'participant-login'}`} replace />;
   }
+  
   return children; // Render the protected component if authenticated
 };
 
@@ -85,14 +89,14 @@ function AnimatedRoutes() {
           path="/event_organizer-login"
           element={
             <WholePageWrapper>
-              <Login role="Event Organizer" />
+              <Login role="event_organizer" />
             </WholePageWrapper>
           }
         />
 
         {/* Protected Routes */}
         <Route
-          path="/home"
+          path="/participant-home"
           element={
             <ProtectedRoute allowedRole="participant">
               <WholePageWrapper>
@@ -102,7 +106,7 @@ function AnimatedRoutes() {
           }
         />
         <Route
-          path="/home"
+          path="/judge-home"
           element={
             <ProtectedRoute allowedRole="judge">
               <WholePageWrapper>
@@ -112,7 +116,7 @@ function AnimatedRoutes() {
           }
         />
         <Route
-          path="/home"
+          path="/sponsor-home"
           element={
             <ProtectedRoute allowedRole="sponsor">
               <WholePageWrapper>
@@ -122,7 +126,7 @@ function AnimatedRoutes() {
           }
         />
         <Route
-          path="/home"
+          path="/admin-home"
           element={
             <ProtectedRoute allowedRole="admin">
               <WholePageWrapper>
@@ -132,7 +136,7 @@ function AnimatedRoutes() {
           }
         />
         <Route
-          path="/home"
+          path="/event_organizer-home"
           element={
             <ProtectedRoute allowedRole="event_organizer">
               <WholePageWrapper>
@@ -187,6 +191,26 @@ function AnimatedRoutes() {
             <ProtectedRoute allowedRole="participant">
               <WholePageWrapper>
                 <ApprovedEventsPage />
+              </WholePageWrapper>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/events"
+          element={
+            <ProtectedRoute allowedRole="admin">
+              <WholePageWrapper>
+                <ApprovedEventsPage />
+              </WholePageWrapper>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/my-events"
+          element={
+            <ProtectedRoute allowedRole="participant">
+              <WholePageWrapper>
+                <ParticipatedEvents />
               </WholePageWrapper>
             </ProtectedRoute>
           }

@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { getUserRole } from '../utils/auth';
 import SimpleButton from '../Global Components/SimpleButton';
+import { toast } from 'sonner';
 
 const SponsorPaymentsPage = () => {
   const [payments, setPayments] = useState([]);
@@ -35,10 +36,10 @@ const SponsorPaymentsPage = () => {
       });
       console.log(res.data);
       window.location.reload();
-      alert('Payment successful!');
+      toast.success('Payment successful!');
 
     } catch (err) {
-      alert(err.response?.data?.error || 'Payment failed.');
+      toast.error(err.response?.data?.error || 'Payment failed.');
     }
   };
 

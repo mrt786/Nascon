@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { getUserRole } from '../utils/auth';
 import axios from 'axios';
 import { motion } from 'framer-motion';
+import { toast } from 'sonner';
 
 const AdminCreateUser = () => {
   const [formData, setFormData] = useState({
@@ -55,7 +56,7 @@ const AdminCreateUser = () => {
         password:formData.password,
       });
       console.log(response.data);
-      alert(formData.userType,' created successfully!')
+      toast.success(`${formData.userType} created successfully!`)
       navigate('/home'); 
       window.location.reload(); // Reload the page to reflect the new state
     

@@ -6,6 +6,7 @@ import InputBox from '../Global Components/InputBox';
 import SimpleButton from '../Global Components/SimpleButton';
 import { getUserRole } from '../utils/auth';
 import AnimatedForm from '../Animations/AnimatedForms';
+import { toast } from 'sonner';
 
 const ParticipantPaymentForm = () => {
   const { eventId } = useParams();
@@ -36,16 +37,18 @@ const ParticipantPaymentForm = () => {
         { event_id: eventId, amount_paid: Number(amountPaid) },
         { headers: { Authorization: `${token}` } }
       );
-      alert('Payment completed successfully.');
+      toast.success('Payment completed successfully.');
       navigate('/events');
-      window.location.reload();
+      // window.location.reload();
     } catch (err) {
       setError(err.response?.data?.error || 'Payment failed.');
     }
   };
 
   return (
-    <div className="bg-slate-800 min-h-screen text-white">
+    <div>
+
+<div className="bg-slate-800 min-h-screen text-white flex items-center justify-center">
       
       <AnimatedForm>
         <h2 className="text-2xl font-bold mb-4 text-orange-500 text-center">Complete Payment</h2>
@@ -69,6 +72,7 @@ const ParticipantPaymentForm = () => {
           <SimpleButton text="Pay Now" type="submit" width="w-full" />
         </form>
       </AnimatedForm>
+    </div>
     </div>
   );
 };

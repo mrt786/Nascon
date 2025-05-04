@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 import { getUserRole } from '../utils/auth';
 import InputBox from '../Global Components/InputBox';
@@ -6,7 +7,6 @@ import LoginButton from '../Global Components/LoginButton';
 import { motion } from 'framer-motion';
 import AnimatedForm from '../Animations/AnimatedForms';
 const OrganizeEvent = () => {
-  const userRole = getUserRole();
   const [formData, setFormData] = useState({
     category: '',
     event_name: '',
@@ -81,7 +81,6 @@ const OrganizeEvent = () => {
                 onChange={handleChange}
                 name= "category"
                 value={formData.category}
-                defaultValue=""
                 className="w-full p-2 rounded-md text-black placeholder-slate-400  focus:outline-none focus:ring-2"
               >
                 <option value="" >Select Event Category</option>
@@ -121,7 +120,6 @@ const OrganizeEvent = () => {
                 onChange={handleChange}
                 value={formData.current_round}
                 name="current_round"
-                defaultValue=""
                 className="w-full p-2 rounded-md text-black placeholder-slate-400  focus:outline-none focus:ring-2"
               >
                 <option value="" >Select Round Type</option>
@@ -164,5 +162,3 @@ const OrganizeEvent = () => {
 
 export default OrganizeEvent;
 
-// Usage: Add route in your App.jsx:
-// <Route path="/organize-event" element={<OrganizeEvent />} />

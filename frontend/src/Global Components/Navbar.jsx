@@ -6,30 +6,30 @@ import { useNavigate } from 'react-router-dom'; // Assuming imported
 
 const navOptions = {
   admin: [
-    { path: '/home', label: 'Home' },
+    { path: '/admin-home', label: 'Home' },
     { path: '/create-user', label: 'Create User' },
     { path: '/approve-events', label: 'Approve Events' },
     { path: '/events', label: 'Events' },
     { path: '/accommodation-settings', label: 'Accommodations' },
   ],
   judge: [
-    { path: '/home', label: 'Home' },
+    { path: '/judge-home', label: 'Home' },
     { path: '/judge/my-events', label: 'My Events' },
     { path: '/judge/assign-event', label: 'Assign to Event' },
   ],
   participant: [
-    { path: '/home', label: 'Home' },
+    { path: '/participant-home', label: 'Home' },
     { path: '/events', label: 'Events' },
     { path: '/my-events', label: 'My Events' },
     { path: '/accommodations', label: 'Accommodations' },
   ],
   event_organizer: [
-    { path: '/home', label: 'Home' },
+    { path: '/event_organizer-home', label: 'Home' },
     { path: '/organize-events', label: 'Organize Event' },
     { path: '/event-organizer/approved-events', label: 'My Events' },
   ],
   sponsor: [
-    { path: '/home', label: 'Home' },
+    { path: '/sponsor-home', label: 'Home' },
     { path: '/sponsor-events', label: 'Browse Packages' },
     { path: '/sponsor/payments', label: 'My Payments' },
   ]
@@ -76,7 +76,7 @@ return (
           } transition-colors duration-500`}
         >
           <div className="container mx-auto px-4 py-3 flex items-center bg-slate-900">
-            <h2 className="text-xl font-bold capitalize text-white">{GetUserRole(role)} Panel</h2>
+            <h2 className="text-xl min-w-20 font-bold capitalize text-white">{GetUserRole(role)} Panel</h2>
             <div className="flex justify-center w-full">
               <ul className="flex gap-4 text-white">
                 {links.map((link, index) => {
@@ -85,7 +85,7 @@ return (
                     <li key={index} className="px-4">
                       <Link
                         to={link.path}
-                        className={`pb-1 border-b-2 transition duration-200 ${
+                        className={`pb-1 border-b-2 transition duration-200 font-normal ${
                           isActive
                             ? 'border-orange-500'
                             : 'border-transparent hover:border-orange-500'
@@ -97,8 +97,9 @@ return (
                   );
                 })}
               </ul>
-              <SimpleButton onClick={handleLogout} text="Logout" className="ml-auto" />
+
             </div>
+          <SimpleButton onClick={handleLogout} text="Logout" className="ml-auto" />
           </div>
         </motion.nav>
 

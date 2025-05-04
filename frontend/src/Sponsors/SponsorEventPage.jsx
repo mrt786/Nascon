@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { getUserRole } from '../utils/auth';
 import LoginButton from '../Global Components/LoginButton';
 import SimpleButton from '../Global Components/SimpleButton';
+import { toast } from 'sonner';
 
 const SponsorEventPage = () => {
   const [events, setEvents] = useState([]);
@@ -39,7 +40,7 @@ const SponsorEventPage = () => {
       navigate(`/sponsor/payments`, { state: { event_id: eventId, sponsor_level: sponsorLevel } });
       window.location.reload();
     } catch (err) {
-      alert(err.response?.data?.error || 'Package selection failed.');
+      toast.error(err.response?.data?.error || 'Package selection failed.');
     }
   };
   const SetSponsortype = (type) => {

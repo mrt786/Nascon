@@ -4,8 +4,9 @@ import LoginButton from './LoginButton';
 import { useNavigate } from 'react-router-dom';
 import RoleSelector from './RoleSelection';
 import axios from 'axios';
-import PageWrapper from '../Animations/PageFadeIn';
 import AnimatedForm from '../Animations/AnimatedForms';
+import { toast } from 'sonner';
+import { getUserRole } from '../utils/auth';
 const Login = ({ role }) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
@@ -15,6 +16,13 @@ const Login = ({ role }) => {
   const handlePasswordToggle = () => {
     setShowPassword(prevState => !prevState); // Toggle the state of password visibility
   };
+  const EditRole = (role) => {
+    if (role === 'event_organizer') {
+      return 'event organizer';
+    } else {
+      return role;
+    } 
+  };
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -23,29 +31,31 @@ const Login = ({ role }) => {
         email,
         password,
       });
+      const role = getUserRole(); // Get the role from the response or local storage
       const  token  = response.data.token;
       localStorage.setItem('token', token); // Save token for authentication
       localStorage.setItem('role', role); // Save role for later use
-      alert('Login successful!');
-      navigate('/home'); // change the route to home
-      window.location.reload(); // Reload the page to reflect the new state
+      console.log('Login successful:', role);
+      toast.success(`${role} Login successful!`); // Show success message
+      navigate(`/${role}-home ` ); // change the route to home
+      
+      // window.location.reload(); // Reload the page to reflect the new state
     } catch (error) 
     {
       console.error(error);
       if (error.response && error.response.data && error.response.data.error) {
-        setErrorPopup(error.response.data.error);
+        toast.error(error.response.data.error);
       } else {
-        setErrorPopup('Something went wrong. Please try again.');
+        toast.error('Something went wrong. Please try again.');
       }
     }
   };
 
   return (
-    <PageWrapper>
       <div className="min-h-screen flex items-center justify-center bg-slate-800 text-white">
       <AnimatedForm>
       <h2 className="text-2xl font-bold mb-4 text-orange-500 capitalize">
-          {role} Login Form
+          {EditRole(role)} Login Form
         </h2>
 
         <form onSubmit={handleLogin} className="space-y-3">
@@ -88,7 +98,6 @@ const Login = ({ role }) => {
         )}
       </AnimatedForm>
     </div>
-    </PageWrapper>
   );
 };
 

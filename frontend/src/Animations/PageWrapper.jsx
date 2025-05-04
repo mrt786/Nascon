@@ -15,6 +15,7 @@ export default function WholePageWrapper({ children }) {
       animate="animate"
       exit="exit"
       style={{ position: 'relative' }}   // ensure we don’t overlap pages
+      className='bg-slate-800 min-h-screen'
     >
       {children}
     </motion.div>

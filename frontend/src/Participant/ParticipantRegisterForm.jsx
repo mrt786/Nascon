@@ -6,6 +6,7 @@ import InputBox from '../Global Components/InputBox';
 import SimpleButton from '../Global Components/SimpleButton';
 import { getUserRole } from '../utils/auth';
 import AnimatedForm from '../Animations/AnimatedForms';
+import { toast } from 'sonner';
 
 const ParticipantRegisterForm = () => {
   const { eventId } = useParams();
@@ -19,7 +20,7 @@ const ParticipantRegisterForm = () => {
 
   useEffect(() => {
     if (userRole !== 'participant') {
-        alert('You are not authorized to access this page. Login as a participant.');
+        toast.error('You are not authorized to access this page. Login as a participant.');
       // redirect non-participants away
       navigate('/login');
     }
@@ -39,7 +40,7 @@ const ParticipantRegisterForm = () => {
         { event_id: eventId, team_name: teamName },
         { headers: { Authorization: token } }
       );
-      alert('Registered successfully! Proceed to payment.');
+      toast.success('Registered successfully! Proceed to payment.');
       navigate(`/participant/payment/${eventId}`, { state: { event } });
       window.location.reload();
     } catch (err) {
@@ -48,9 +49,9 @@ const ParticipantRegisterForm = () => {
   };
 
   return (
-    <div className="bg-slate-800 min-h-screen text-white">
+    <div className="bg-slate-800 min-h-screen flex items-center justify-center text-white ">
         <AnimatedForm>
-        <h2 className="text-2xl font-bold mb-4 text-orange-500 text-center">
+        <h2 className="text-2xl font-bold mb-4 text-orange-500">
           Register for Event
         </h2>
 

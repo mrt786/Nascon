@@ -5,10 +5,10 @@ import { getUserRole } from '../utils/auth';
 import LoginButton from './LoginButton';
 import InputBox from './InputBox';
 import AnimatedForm from '../Animations/AnimatedForms';
+import { toast } from 'sonner';
 const BookingForm = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
-  const userRole = getUserRole();
   const { accommodation, date } = state || {};
   const [bookingDate] = useState(date);
   const [error, setError] = useState('');
@@ -71,12 +71,11 @@ const BookingForm = () => {
       );
       console.log("The response is: ", res.data);
       const { payment_id } = res.data;
-      alert('Booking successful! Proceed to payment.');
+      toast.success('Booking successful ');
       navigate(`/accommodations`);
-      window.location.reload(); // Reload the page to reflect the new state
     } catch (err) {
       console.log('THe error is: ', err.response?.data?.error);
-      setError(err.response?.data?.error || 'Booking failed.');
+      toast.error(err.response?.data?.error || 'Booking failed.');
     }
   };
 
@@ -119,9 +118,6 @@ const BookingForm = () => {
                 req = {true}
               />
 
-              
-          {/* </div> */}
-          {error && <p className="text-red-600">{error}</p>}
           <LoginButton text = {"Proceed to Payment"} btype = {"Submit"} />
         </form>
       </AnimatedForm>

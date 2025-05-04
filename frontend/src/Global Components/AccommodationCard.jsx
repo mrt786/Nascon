@@ -2,7 +2,7 @@ import SimpleButton from "./SimpleButton";
 
 const AccommodationCard = ({ accommodation, onBook }) => {
     return (
-      <div className="bg-slate-900 rounded-xl shadow-md overflow-hidden w-[300px]">
+      <div className="bg-slate-900 rounded-xl shadow-md overflow-hidden w-[300px] border border-orange-500">
         <img
           src= './accomodation.jpeg'
           alt="Accommodation"
