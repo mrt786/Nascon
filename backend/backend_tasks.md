@@ -46,10 +46,5 @@
 
 ## 🔴 Critical
 - [ ] Implement leaderboard API and winner declaration logic
-- [ ] Enable team registration: team creation, joining, and team-based event participation
-- [ ] Build admin-facing APIs to expose reports from DB views/procedures:
-  - `/api/reports/venue-utilization`
-  - `/api/reports/finance`
-  - `/api/reports/participant-demographics`
 - [ ] Implement audit logging (user actions like approvals, payments, etc.)
 

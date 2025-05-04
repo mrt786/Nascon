@@ -17,6 +17,12 @@ router.post('/signup', async (req, res) => {
 
   const { fname, lname, contact_no, role, email, password } = req.body;
 
+  // Validate role
+  const allowedRoles = ['admin', 'participant', 'event_organizer', 'sponsor', 'judge'];
+  if (!allowedRoles.includes(role)) {
+    return res.status(400).send({ error: 'Invalid role.' });
+  }
+
   const hashed = await bcrypt.hash(password, 10);
 
   try {
@@ -32,7 +38,7 @@ router.post('/signup', async (req, res) => {
     const userId = result.insertId;
 
     // Insert into role-specific table
-      if (role === 'sponsor') {
+    if (role === 'sponsor') {
       await db.query('INSERT INTO sponsors (sponsor_id) VALUES (?)', [userId]);
     } else if (role === 'judge') {
       await db.query('INSERT INTO judges (user_id) VALUES (?)', [userId]);

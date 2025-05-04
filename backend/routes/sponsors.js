@@ -57,17 +57,26 @@ router.post('/select-package', auth, async (req, res) => {
     );
     if (!pkg) return res.status(404).send({ error: 'Sponsorship package not found.' });
 
-    // 2) insert into sponsor_payments (no event_sponsors yet)
+    // 2) check if sponsor already selected this package for this event
+    const [[alreadySponsored]] = await db.query(
+      'SELECT 1 FROM event_sponsors WHERE event_id = ? AND sponsor_id = ?',
+      [event_id, sponsor_id]
+    );
+    if (alreadySponsored) {
+      return res.status(400).send({ error: 'You have already selected a package for this event.' });
+    }
+
+    // 3) insert into sponsor_payments (no event_sponsors yet)
     const [payResult] = await db.query(
       'INSERT INTO sponsor_payments (sponsor_id, amount, payment_status) VALUES (?, ?, false)',
       [sponsor_id, pkg.sponsor_amount]
     );
     const payment_id = payResult.insertId;
 
-
-    // 3) create a payment link
-    const [event_sponsor] = await db.query(
-      'INSERT INTO event_sponsors (event_id, sponsor_id, payment_id) VALUES (?, ?, ?)',[event_id, sponsor_id, payment_id]);
+    // 4) create a payment link
+    await db.query(
+      'INSERT INTO event_sponsors (event_id, sponsor_id, payment_id) VALUES (?, ?, ?)', [event_id, sponsor_id, payment_id]
+    );
 
     res.send({
       message: 'Package reserved; complete payment to finalize sponsorship.',
@@ -76,6 +85,9 @@ router.post('/select-package', auth, async (req, res) => {
       sponsor_level
     });
   } catch (err) {
+    if (err.code === 'ER_DUP_ENTRY') {
+      return res.status(400).send({ error: 'You have already selected a package for this event.' });
+    }
     console.error(err);
     res.status(500).send({ error: 'Failed to select sponsorship package.' });
   }
@@ -150,5 +162,40 @@ router.post('/pay', auth, async (req, res) => {
   }
 });
 
+// Sponsors: View events they are sponsoring
+router.get('/my-sponsored-events', auth, async (req, res) => {
+  if (req.user.role !== 'sponsor') {
+    return res.status(403).send({ error: 'Access denied. Only sponsors can view this.' });
+  }
+  const sponsor_id = req.user.id;
+  try {
+    const [rows] = await db.query(
+      `SELECT 
+         e.event_id,
+         d.event_name,
+         d.event_date,
+         d.registration_fee,
+         d.current_round,
+         d.rules,
+         d.event_description,
+         d.max_participants,
+         e.category,
+         p.sponsor_level,
+         p.sponsor_amount,
+         sp.payment_status
+       FROM event_sponsors es
+       JOIN nascon_events e ON es.event_id = e.event_id
+       JOIN event_details d ON e.event_id = d.event_id
+       JOIN sponsor_payments sp ON es.payment_id = sp.payment_id
+       JOIN event_sponsorship_packages p ON p.event_id = e.event_id AND p.sponsor_amount = sp.amount
+       WHERE es.sponsor_id = ?`,
+      [sponsor_id]
+    );
+    res.send(rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send({ error: 'Failed to fetch sponsored events.' });
+  }
+});
 
 module.exports = router;

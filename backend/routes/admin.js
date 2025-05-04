@@ -84,5 +84,49 @@ router.get('/pending-approval-by-admin', auth, async (req, res) => {
   }
 });
 
+// Venue Utilization Report (only for admins)
+router.get('/reports/venue-utilization', auth, async (req, res) => {
+  const user = req.user;
+  if (user.role !== 'admin') {
+    return res.status(403).send({ error: 'Access denied. Only admins can view reports.' });
+  }
+  try {
+    const [rows] = await db.query('SELECT * FROM venue_utilization_report');
+    res.send(rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send({ error: 'Failed to fetch venue utilization report.' });
+  }
+});
+
+// Finance Report (only for admins)
+router.get('/reports/finance', auth, async (req, res) => {
+  const user = req.user;
+  if (user.role !== 'admin') {
+    return res.status(403).send({ error: 'Access denied. Only admins can view reports.' });
+  }
+  try {
+    const [rows] = await db.query('SELECT * FROM finance_report');
+    res.send(rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send({ error: 'Failed to fetch finance report.' });
+  }
+});
+
+// Participant Demographics Report (only for admins)
+router.get('/reports/participant-demographics', auth, async (req, res) => {
+  const user = req.user;
+  if (user.role !== 'admin') {
+    return res.status(403).send({ error: 'Access denied. Only admins can view reports.' });
+  }
+  try {
+    const [rows] = await db.query('SELECT * FROM participant_demographics_report');
+    res.send(rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send({ error: 'Failed to fetch participant demographics report.' });
+  }
+});
 
 module.exports = router;

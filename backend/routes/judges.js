@@ -28,6 +28,37 @@ router.get('/my-events', auth, async (req, res) => {
   }
 });
 
+// Judges: View events they are judging (detailed)
+router.get('/judging-events', auth, async (req, res) => {
+  if (req.user.role !== 'judge') {
+    return res.status(403).send({ error: 'Access denied. Judges only.' });
+  }
+  const judgeId = req.user.id;
+  try {
+    const [rows] = await db.query(
+      `SELECT 
+         e.event_id,
+         d.event_name,
+         d.event_date,
+         d.registration_fee,
+         d.current_round,
+         d.rules,
+         d.event_description,
+         d.max_participants,
+         e.category
+       FROM event_judges ej
+       JOIN nascon_events e ON ej.event_id = e.event_id
+       JOIN event_details d ON d.event_id = e.event_id
+       WHERE ej.judge_id = ?`,
+      [judgeId]
+    );
+    res.send(rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send({ error: 'Failed to fetch judging events.' });
+  }
+});
+
 // POST: Judge submits score for a participant or team in a specific round
 router.post('/submit-score', auth, async (req, res) => {
   const judgeId = req.user.id;
