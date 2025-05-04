@@ -55,9 +55,8 @@ const AdminCreateUser = () => {
         email:formData.email,
         password:formData.password,
       });
-      console.log(response.data);
       toast.success(`${formData.userType} created successfully!`)
-      navigate('/home'); 
+      console.log(response.data);
       window.location.reload(); // Reload the page to reflect the new state
     
     } 

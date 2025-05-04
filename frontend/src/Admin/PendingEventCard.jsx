@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import SimpleButton from '../Global Components/SimpleButton';
 
 const PendingEventCard = ({ event, onAction }) => {
   const [loading, setLoading] = useState(false);
@@ -57,20 +58,8 @@ const PendingEventCard = ({ event, onAction }) => {
 
     {/* Action Buttons */}
     <div className="flex gap-4 mt-4">
-      <button
-        className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
-        onClick={handleApprove}
-        disabled={loading}
-      >
-        Approve
-      </button>
-      <button
-        className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
-        onClick={handleReject}
-        disabled={loading}
-      >
-        Reject
-      </button>
+      <SimpleButton onClick={handleApprove} text={"Approve"} />
+      <SimpleButton onClick={handleReject} text={"Reject"}  />
     </div>
   </div>
 </div>

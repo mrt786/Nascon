@@ -9,7 +9,7 @@ const navOptions = {
     { path: '/admin-home', label: 'Home' },
     { path: '/create-user', label: 'Create User' },
     { path: '/approve-events', label: 'Approve Events' },
-    { path: '/events', label: 'Events' },
+    { path: '/admin-events', label: 'Events' },
     { path: '/accommodation-settings', label: 'Accommodations' },
   ],
   judge: [

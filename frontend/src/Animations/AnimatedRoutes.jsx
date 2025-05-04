@@ -196,7 +196,7 @@ function AnimatedRoutes() {
           }
         />
         <Route
-          path="/events"
+          path="/admin-events"
           element={
             <ProtectedRoute allowedRole="admin">
               <WholePageWrapper>

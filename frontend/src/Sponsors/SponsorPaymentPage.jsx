@@ -49,7 +49,10 @@ const SponsorPaymentsPage = () => {
         <h1 className="text-3xl font-bold text-orange-500 mb-6 text-center">Your Sponsorship Payments</h1>
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
         <div className="space-y-4">
-          {payments.map(p => (
+          {payments.length === 0 && (
+            <p className="text-center text-white-400">No payments found.</p>
+          )}
+          {payments && payments.map(p => (
             <div key={p.payment_id} className="bg-slate-900 text-white rounded-xl shadow p-4 flex justify-between items-center">
               <div>
                 <p>Payment ID: {p.payment_id}</p>
