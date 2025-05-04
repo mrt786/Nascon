@@ -31,6 +31,7 @@ const navOptions = {
     {path :'/add-sponsorships-packages', label: 'Add Sponsorship'},
     {path :'/view-event-details', label: 'View Event Details'},
     { path: '/organizer/sponsor-amount',  label: 'Sponsor Amount' },
+    {path: '/sponsor-income-report' , label: 'Sponsor Report'}
   ],
   sponsor: [
     { path: '/sponsor-home', label: 'Home' },

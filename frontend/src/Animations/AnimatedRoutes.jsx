@@ -26,6 +26,7 @@ import JudgingEventsPage from '../Judge/JudgeEvents.jsx';
 import AddSponsorshipPackages from '../Event Organizer/AddSponsorshipPackage.jsx';
 import ViewEventDetails from '../Event Organizer/ViewEventDetails.jsx';
 import ViewSponsorAmount from '../Event Organizer/ViewSponsorAmount.jsx';
+import SponsorIncomeReport from '../Event Organizer/SponsorIncomeReport.jsx';
 
 // Helper function to check authentication and role
 const ProtectedRoute = ({ children, allowedRole }) => {
@@ -184,6 +185,16 @@ function AnimatedRoutes() {
             <ProtectedRoute allowedRole="event_organizer">
               <WholePageWrapper>
                 <ViewSponsorAmount/>
+              </WholePageWrapper>
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path="/sponsor-income-report"
+          element={
+            <ProtectedRoute allowedRole="event_organizer">
+              <WholePageWrapper>
+                <SponsorIncomeReport/>
               </WholePageWrapper>
             </ProtectedRoute>
           }
