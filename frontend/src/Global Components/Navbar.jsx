@@ -30,12 +30,14 @@ const navOptions = {
     { path: '/event-organizer/approved-events', label: 'My Events' },
     {path :'/add-sponsorships-packages', label: 'Add Sponsorship'},
     {path :'/view-event-details', label: 'View Event Details'},
+    { path: '/organizer/sponsor-amount',  label: 'Sponsor Amount' },
   ],
   sponsor: [
     { path: '/sponsor-home', label: 'Home' },
     { path: '/sponsor-events', label: 'Browse Packages' },
     { path: '/sponsor/payments', label: 'My Payments' },
     { path: '/sponsor/approved-events', label: 'My Events' },
+
   ]
 };
 
