@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Navbar from '../Global Components/Navbar';
 import { getUserRole } from '../utils/auth';
 
 const ApprovedEventsByOrganizor = () => {
@@ -26,7 +25,7 @@ const ApprovedEventsByOrganizor = () => {
 
   return (
     <div className="bg-slate-800 min-h-screen text-white">
-      <Navbar role={userRole} />
+      
       <div className="px-6 py-10">
         <h1 className="text-3xl font-bold text-orange-500 mb-6 text-center">My Organized Events</h1>
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}

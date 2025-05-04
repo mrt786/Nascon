@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import Navbar from '../Global Components/Navbar';
 import { getUserRole } from '../utils/auth';
 import LoginButton from '../Global Components/LoginButton';
 import SimpleButton from '../Global Components/SimpleButton';
@@ -38,6 +37,7 @@ const SponsorEventPage = () => {
       const { payment_id } = res.data;
       console.log("Navigating to payment page with payment_id:");
       navigate(`/sponsor/payments`, { state: { event_id: eventId, sponsor_level: sponsorLevel } });
+      window.location.reload();
     } catch (err) {
       alert(err.response?.data?.error || 'Package selection failed.');
     }
@@ -75,7 +75,7 @@ const SponsorEventPage = () => {
   };
   return (
     <div className="bg-slate-800 min-h-screen text-white">
-      <Navbar role={userRole} />
+
       <div className="px-6 py-10">
         <h1 className="text-3xl font-bold text-orange-500 mb-6 text-center">Available Sponsorships</h1>
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}

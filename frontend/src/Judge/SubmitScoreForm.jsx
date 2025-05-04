@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Navbar from '../Global Components/Navbar';
 import InputBox from '../Global Components/InputBox';
 import SimpleButton from '../Global Components/SimpleButton';
 import { getUserRole } from '../utils/auth';

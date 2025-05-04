@@ -78,7 +78,7 @@ const handleSubmit = async (e) => {
 
       const  token  = response.data.token;
       localStorage.setItem('token', token); // Save token for authentication
-
+      localStorage.setItem('role', 'participant'); // Save role for later use
       alert('Login successful!');
       navigate('/home'); // change the route to home
       

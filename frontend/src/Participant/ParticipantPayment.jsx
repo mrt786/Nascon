@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Navbar from '../Global Components/Navbar';
 import InputBox from '../Global Components/InputBox';
 import SimpleButton from '../Global Components/SimpleButton';
 import { getUserRole } from '../utils/auth';
@@ -39,6 +38,7 @@ const ParticipantPaymentForm = () => {
       );
       alert('Payment completed successfully.');
       navigate('/events');
+      window.location.reload();
     } catch (err) {
       setError(err.response?.data?.error || 'Payment failed.');
     }
@@ -46,7 +46,7 @@ const ParticipantPaymentForm = () => {
 
   return (
     <div className="bg-slate-800 min-h-screen text-white">
-      <Navbar role={userRole} />
+      
       <AnimatedForm>
         <h2 className="text-2xl font-bold mb-4 text-orange-500 text-center">Complete Payment</h2>
 

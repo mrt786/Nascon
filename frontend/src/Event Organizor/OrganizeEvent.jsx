@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import Navbar from '../Global Components/Navbar';
+
 import { getUserRole } from '../utils/auth';
 import InputBox from '../Global Components/InputBox';
 import LoginButton from '../Global Components/LoginButton';
 import { motion } from 'framer-motion';
 import AnimatedForm from '../Animations/AnimatedForms';
 const OrganizeEvent = () => {
-  const navigate = useNavigate();
   const userRole = getUserRole();
   const [formData, setFormData] = useState({
     category: '',
@@ -63,8 +60,6 @@ const OrganizeEvent = () => {
         { headers: { Authorization: `${token}` } }
       );
       setSuccess('Event sent for approval!');
-      // Optionally navigate to organizer dashboard:
-      // navigate('/event-organizer-home');
     } catch (err) {
       setError(err.response?.data?.error || 'Failed to send event.');
     }
@@ -72,7 +67,7 @@ const OrganizeEvent = () => {
 
   return (
     <div className="bg-slate-800 min-h-screen text-white">
-      <Navbar role={userRole} />
+      
 
       <div className="flex items-center justify-center py-10 px-4">
         <AnimatedForm>

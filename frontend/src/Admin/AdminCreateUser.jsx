@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import LoginButton from '../Global Components/LoginButton';
 import InputBox from '../Global Components/InputBox';
-import Navbar from '../Global Components/Navbar';
 import { validatePassword } from '../utils/auth';
 import { validatePhone } from '../utils/auth';
 import { useNavigate } from 'react-router-dom';
@@ -58,6 +57,7 @@ const AdminCreateUser = () => {
       console.log(response.data);
       alert(formData.userType,' created successfully!')
       navigate('/home'); 
+      window.location.reload(); // Reload the page to reflect the new state
     
     } 
     catch (error) {
@@ -82,7 +82,6 @@ const AdminCreateUser = () => {
 
   return (
     <div >
-      <Navbar role = 'admin'/>
       <div className="min-h-screen flex items-center justify-center bg-slate-800 text-white">
       <div className="bg-slate-900 rounded-2xl shadow-xl p-8 w-[380px] text-center">
         <h2 className="text-2xl font-bold mb-6 text-orange-500">Create New User</h2>

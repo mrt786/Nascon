@@ -18,7 +18,9 @@ const RoleSelector = () => {
       navigate('/sponsor-login');
     } else if (selectedRole === 'event_organizer') {
       navigate('/event_organizer-login');
+    
     }
+    // window.location.reload(); 
   };
 
   return (

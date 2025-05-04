@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Navbar from './Navbar';
 import { getUserRole } from '../utils/auth';
 import LoginButton from './LoginButton';
 import InputBox from './InputBox';
@@ -74,6 +73,7 @@ const BookingForm = () => {
       const { payment_id } = res.data;
       alert('Booking successful! Proceed to payment.');
       navigate(`/accommodations`);
+      window.location.reload(); // Reload the page to reflect the new state
     } catch (err) {
       console.log('THe error is: ', err.response?.data?.error);
       setError(err.response?.data?.error || 'Booking failed.');
@@ -83,7 +83,7 @@ const BookingForm = () => {
   return (
     <div>
 
-      <Navbar role={userRole} />
+      
       <div className="min-h-screen flex items-center justify-center bg-slate-800 text-white">
       <AnimatedForm>
       <h2 className="text-2xl font-bold mb-4 text-center text-orange-500 capitalize ">Confirm Booking</h2>

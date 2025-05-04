@@ -24,6 +24,7 @@ const ApprovedEventCard = ({ event, onAction }) => {
       `/participant/register/${event.event_id}`,
       { state: { event } }
     );
+    window.location.reload(); // Reload the page to reflect the new state
   };
   return (
     <div className="group relative border rounded-lg shadow-md p-4 transition-all duration-300 bg-slate-900 hover:bg-slate-950-100 cursor-pointer">

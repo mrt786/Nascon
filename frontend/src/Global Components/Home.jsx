@@ -1,6 +1,5 @@
 import React from 'react';
 import Countdown from './Countdown';
-import Navbar from './Navbar';
 import Cards from './HighlightCard';
 import { getUserRole } from '../utils/auth';
 import { Section } from '../Animations/SectionScroll';
@@ -12,8 +11,6 @@ const HomePage = ({ roles }) => {
     <PageWrapper>
 
 <div className="bg-slate-800 text-white">
-      {/* Navbar */}
-      <Navbar role={userRole} />
 
       {/* Hero Section */}
 

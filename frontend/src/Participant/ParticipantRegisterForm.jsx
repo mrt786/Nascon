@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Navbar from '../Global Components/Navbar';
 import InputBox from '../Global Components/InputBox';
 import SimpleButton from '../Global Components/SimpleButton';
 import { getUserRole } from '../utils/auth';
@@ -42,6 +41,7 @@ const ParticipantRegisterForm = () => {
       );
       alert('Registered successfully! Proceed to payment.');
       navigate(`/participant/payment/${eventId}`, { state: { event } });
+      window.location.reload();
     } catch (err) {
       setError(err.response?.data?.error || 'Registration failed. You may have already registered for this event.');
     }
@@ -49,7 +49,6 @@ const ParticipantRegisterForm = () => {
 
   return (
     <div className="bg-slate-800 min-h-screen text-white">
-      <Navbar role={userRole} />
         <AnimatedForm>
         <h2 className="text-2xl font-bold mb-4 text-orange-500 text-center">
           Register for Event

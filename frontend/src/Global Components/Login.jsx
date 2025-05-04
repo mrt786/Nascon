@@ -25,9 +25,10 @@ const Login = ({ role }) => {
       });
       const  token  = response.data.token;
       localStorage.setItem('token', token); // Save token for authentication
-
+      localStorage.setItem('role', role); // Save role for later use
       alert('Login successful!');
       navigate('/home'); // change the route to home
+      window.location.reload(); // Reload the page to reflect the new state
     } catch (error) 
     {
       console.error(error);

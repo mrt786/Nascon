@@ -2,7 +2,6 @@ import React, { useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import AccommodationCard from './AccommodationCard';
-import Navbar from './Navbar';
 import { getUserRole } from '../utils/auth'; // Adjust the import path as necessary
 const AccommodationPage = () => {
   const navigate = useNavigate();
@@ -33,7 +32,9 @@ const AccommodationPage = () => {
         },
         date 
       } 
+    
     });
+    window.location.reload(); // Reload the page to reflect the new state
   };
 
   useEffect(() => {
@@ -44,7 +45,7 @@ const AccommodationPage = () => {
 
      <div className="bg-slate-800 text-white">
           {/* Navbar */}
-          <Navbar role={userRole} />
+          
     
           {/* Hero Section */}
       <div className="min-h-screen bg-slate-800 px-8 py-10 text-white">
