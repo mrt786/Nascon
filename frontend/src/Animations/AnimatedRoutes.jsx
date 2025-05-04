@@ -21,6 +21,7 @@ import AssignToEventForm from '../Judge/JudgeAssignToEventForm.jsx';
 import SubmitScoreForm from '../Judge/SubmitScoreForm.jsx';
 import { toast } from 'sonner';
 import ParticipatedEvents from '../Participant/ParticipatedEvents.jsx';
+import SponsoredEventsPage from '../Sponsors/Sponsored.jsx';
 
 // Helper function to check authentication and role
 const ProtectedRoute = ({ children, allowedRole }) => {
@@ -235,6 +236,17 @@ function AnimatedRoutes() {
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/sponsor/approved-events"
+          element={
+            <ProtectedRoute allowedRole="sponsor">
+              <WholePageWrapper>
+                <SponsoredEventsPage/>
+              </WholePageWrapper>
+            </ProtectedRoute>
+          }
+        />
+
         <Route
           path="/event-organizer/approved-events"
           element={

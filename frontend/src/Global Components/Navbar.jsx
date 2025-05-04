@@ -32,6 +32,7 @@ const navOptions = {
     { path: '/sponsor-home', label: 'Home' },
     { path: '/sponsor-events', label: 'Browse Packages' },
     { path: '/sponsor/payments', label: 'My Payments' },
+    { path: '/sponsor/approved-events', label: 'My Events' },
   ]
 };
 
