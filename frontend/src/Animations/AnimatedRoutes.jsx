@@ -23,6 +23,7 @@ import ParticipatedEvents from '../Participant/ParticipatedEvents.jsx';
 import SponsoredEventsPage from '../Sponsors/Sponsored.jsx';
 import SubmitScoreForm from '../Judge/SubmitScoreForm.jsx';
 import JudgingEventsPage from '../Judge/JudgeEvents.jsx';
+import AddSponsorshipPackages from '../Event Organizer/AddSponsorshipPackage.jsx';
 
 // Helper function to check authentication and role
 const ProtectedRoute = ({ children, allowedRole }) => {
@@ -125,7 +126,46 @@ function AnimatedRoutes() {
             </WholePageWrapper>
           }
         />
-
+                <Route
+          path="/event_organizer-home"
+          element={
+            <ProtectedRoute allowedRole="event_organizer">
+              <WholePageWrapper>
+                <HomePage roles="event_organizer" />
+              </WholePageWrapper>
+            </ProtectedRoute>
+          }
+        />
+                <Route
+          path="/organize-events"
+          element={
+            <ProtectedRoute allowedRole="event_organizer">
+              <WholePageWrapper>
+                <OrganizeEvent />
+              </WholePageWrapper>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/event-organizer/approved-events"
+          element={
+            <ProtectedRoute allowedRole="event_organizer">
+              <WholePageWrapper>
+                <ApprovedEventsByOrganizor />
+              </WholePageWrapper>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/add-sponsorships-packages"
+          element={
+            <ProtectedRoute allowedRole="event_organizer">
+              <WholePageWrapper>
+                <AddSponsorshipPackages />
+              </WholePageWrapper>
+            </ProtectedRoute>
+          }
+        />
         {/* Protected Routes */}
         <Route
           path="/participant-home"
@@ -157,26 +197,8 @@ function AnimatedRoutes() {
             </ProtectedRoute>
           }
         />
-        <Route
-          path="/event_organizer-home"
-          element={
-            <ProtectedRoute allowedRole="event_organizer">
-              <WholePageWrapper>
-                <HomePage roles="event_organizer" />
-              </WholePageWrapper>
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/organize-events"
-          element={
-            <ProtectedRoute allowedRole="event_organizer">
-              <WholePageWrapper>
-                <OrganizeEvent />
-              </WholePageWrapper>
-            </ProtectedRoute>
-          }
-        />
+
+
         <Route
           path="/approve-events"
           element={
@@ -263,17 +285,6 @@ function AnimatedRoutes() {
             <ProtectedRoute allowedRole="sponsor">
               <WholePageWrapper>
                 <SponsoredEventsPage/>
-              </WholePageWrapper>
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/event-organizer/approved-events"
-          element={
-            <ProtectedRoute allowedRole="event_organizer">
-              <WholePageWrapper>
-                <ApprovedEventsByOrganizor />
               </WholePageWrapper>
             </ProtectedRoute>
           }

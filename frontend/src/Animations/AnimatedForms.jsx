@@ -7,7 +7,7 @@ const AnimatedForm = ({ children }) => {
       animate={{ opacity: 1, y: 0 }} // Fade in and slide up
       exit={{ opacity: 0, y: -50 }} // Fade out and slide up
       transition={{ duration: 0.5, ease: "easeOut" }} // Smooth transition
-      className="bg-slate-900 rounded-2xl shadow-xl p-8 w-[350px] border border-orange-500"
+      className="bg-slate-900 rounded-2xl shadow-xl p-8 min-w-[350px] border border-orange-500"
     >
       {children}
     </motion.div>
