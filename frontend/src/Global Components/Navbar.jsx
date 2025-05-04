@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion'; // Assuming imported
+import SimpleButton from './SimpleButton';
+import { useNavigate } from 'react-router-dom'; // Assuming imported
 
 const navOptions = {
   admin: [
@@ -36,6 +38,7 @@ const navOptions = {
 const Navbar = ({ role }) => {
   const location = useLocation();
   const links = navOptions[role] || [];
+  const navigate = useNavigate(); // Assuming imported
 
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -54,9 +57,14 @@ const Navbar = ({ role }) => {
       return role;
     }
   };
-
-  return (
-
+  const handleLogout = () => {
+    localStorage.removeItem('authToken'); // Clear the token
+    localStorage.removeItem('userRole'); // Clear the role
+    const redirectPage = `/${role}-login`;
+    navigate(redirectPage); // Redirect to login page}
+    window.location.reload(); // Refresh the page
+  }
+return (
     <div className='mb-20'>
 
     <motion.nav
@@ -89,6 +97,7 @@ const Navbar = ({ role }) => {
                   );
                 })}
               </ul>
+              <SimpleButton onClick={handleLogout} text="Logout" className="ml-auto" />
             </div>
           </div>
         </motion.nav>
