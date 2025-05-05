@@ -61,6 +61,12 @@ function AnimatedRoutes() {
           }
         />
         <Route
+          path="/"
+          element={
+              <ParticipantAuth />
+          }
+        />
+        <Route
           path="/participant-signup"
           element={
               <ParticipantAuth />
