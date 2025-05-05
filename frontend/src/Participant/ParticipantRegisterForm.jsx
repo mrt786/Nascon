@@ -49,7 +49,7 @@ const ParticipantRegisterForm = () => {
   };
 
   return (
-    <div className="bg-slate-800 min-h-screen flex items-center justify-center text-white ">
+    <div className="bg-slate-800 min-h-screen flex items-start pt-16 justify-center text-white ">
         <AnimatedForm>
         <h2 className="text-2xl font-bold mb-4 text-orange-500">
           Register for Event

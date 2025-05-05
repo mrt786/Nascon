@@ -36,6 +36,7 @@ const ApprovedEventsByOrganizor = () => {
             events.map(event => (
               <div key={event.event_id} className="bg-slate-900 rounded-xl p-6 shadow">
                 <h2 className="text-xl font-bold mb-2">{event.event_name}</h2>
+                <p><span className="font-semibold">Event Id:</span> {event.event_id}</p>
                 <p><span className="font-semibold">Scheduled Date:</span> {event.scheduled_date ? new Date(event.scheduled_date).toLocaleDateString() : 'Not set'}</p>
                 <p><span className="font-semibold">Registration Fee:</span> Rs. {event.registration_fee}</p>
                 <p><span className="font-semibold">Current Round:</span> {event.current_round}</p>

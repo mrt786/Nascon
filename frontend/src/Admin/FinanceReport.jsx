@@ -43,7 +43,7 @@ const FinanceReport = () => {
 
   return (
     <div className="bg-slate-800 min-h-screen text-white pt-20">
-      <div className="max-w-6xl mx-auto px-4 py-8">
+      <div className="max-w-6xl mx-auto px-4">
         <h1 className="text-3xl font-bold text-center text-orange-500 mb-6">
           Finance Report
         </h1>

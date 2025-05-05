@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { getUserRole } from '../utils/auth';
 import SimpleButton from '../Global Components/SimpleButton';
 import { toast } from 'sonner';
 
@@ -10,7 +9,7 @@ const SponsorPaymentsPage = () => {
   const [payments, setPayments] = useState([]);
   const [error, setError] = useState('');
   const navigate = useNavigate();
-  const userRole = getUserRole();
+
 
   const fetchPayments = async () => {
     try {
@@ -52,23 +51,24 @@ const SponsorPaymentsPage = () => {
           {payments.length === 0 && (
             <p className="text-center text-white-400">No payments found.</p>
           )}
-          {payments && payments.map(p => (
-            <div key={p.payment_id} className="bg-slate-900 text-white rounded-xl shadow p-4 flex justify-between items-center">
-              <div>
-                <p>Payment ID: {p.payment_id}</p>
-                <p>Event: {p.event_name}</p>
-                <p>Status: {p.payment_status ? 'Paid' : 'Pending'}</p>
-              </div>
-              {!p.payment_status && (
-                <SimpleButton
-                  text="Pay Now"
-                  btype="button"
-                  onClick={() => handlePay(p.payment_id, p.event_id, p.sponsor_level)}
-                />
-              )}
-            </div>
-          ))}
+          {payments && [...new Map(payments.map(p => [p.payment_id, p])).values()].map(p => (
+        <div key={p.payment_id} className="bg-slate-900 text-white rounded-xl shadow p-4 flex justify-between items-center">
+        <div>
+          <p>Payment ID: {p.payment_id}</p>
+          <p>Event: {p.event_name}</p>
+          <p>Amount: {p.amount}</p>
+          <p>Status: {p.payment_status ? 'Paid' : 'Pending'}</p>
         </div>
+        {!p.payment_status && (
+          <SimpleButton
+            text="Pay Now"
+            btype="button"
+            onClick={() => handlePay(p.payment_id, p.event_id, p.sponsor_level)}
+          />
+        )}
+        </div>
+        ))}
+      </div>
       </div>
     </div>
   );

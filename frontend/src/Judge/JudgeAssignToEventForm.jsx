@@ -33,7 +33,7 @@ const AssignToEventForm = () => {
   }
 
   return (
-    <div className="bg-slate-800 min-h-screen text-white flex items-center justify-center">
+    <div className="bg-slate-800 min-h-screen text-white flex items-start pt-20 justify-center">
       <AnimatedForm>
       <div className="bg-slate-900 p-8 rounded-xl shadow max-w-md w-full">
         <h2 className="text-2xl font-bold mb-4 text-center text-orange-500">Assign to Event</h2>

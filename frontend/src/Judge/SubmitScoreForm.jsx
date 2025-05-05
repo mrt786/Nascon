@@ -46,7 +46,7 @@ const SubmitScoreForm = () => {
   };
 
   return (
-    <div className="bg-slate-800 min-h-screen text-white flex items-center justify-center">
+    <div className="bg-slate-800 min-h-screen text-white flex items-start pt-20 justify-center">
       <AnimatedForm>
       <h2 className="text-2xl font-bold mb-4 text-center text-orange-500">Submit Score</h2>
         <form onSubmit={handleSubmit} className="space-y-4">

@@ -48,7 +48,7 @@ const ParticipantPaymentForm = () => {
   return (
     <div>
 
-<div className="bg-slate-800 min-h-screen text-white flex items-center justify-center">
+<div className="bg-slate-800 min-h-screen text-white flex items-start pt-12 rounded-lg justify-center">
       
       <AnimatedForm>
         <h2 className="text-2xl font-bold mb-4 text-orange-500 text-center">Complete Payment</h2>
