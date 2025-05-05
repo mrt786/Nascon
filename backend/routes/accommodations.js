@@ -88,7 +88,7 @@ router.post('/pay', auth, async (req, res) => {
 // List all available accommodations
 router.get('/available', async (req, res) => {
     try {
-      const [rows] = await db.query('SELECT * FROM accommodations WHERE availability = TRUE');
+      const [rows] = await db.query('SELECT * FROM accommodations WHERE availability = TRUE and booking_count < capacity');
       res.send(rows);
     } catch (err) {
       res.status(500).send({ error: err.message });
