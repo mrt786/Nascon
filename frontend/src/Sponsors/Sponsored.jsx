@@ -37,9 +37,9 @@ const SponsoredEventsPage = () => {
   }
 
   return (
-    <div className="bg-slate-800 min-h-screen text-white pt-20">
+    <div className="bg-slate-800 min-h-screen text-white pt-16">
 
-      <div className="max-w-6xl mx-auto px-4 py-8">
+      <div className="max-w-6xl mx-auto px-4">
         <h1 className="text-3xl text-orange-500 font-bold text-center mb-8">My Sponsored Events</h1>
 
         {events.length === 0 ? (

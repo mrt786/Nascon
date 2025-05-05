@@ -83,7 +83,7 @@ const SponsorEventPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {!events.length && <p className="text-center text-white">No events available for sponsorship.</p>}
           {events && events.map(ev => (
-            <div key={`${ev.event_id}-${ev.sponsor_level}"`} className="bg-slate-900 text-white rounded-xl shadow p-6 ">
+            <div key={`${ev.event_id}-${ev.sponsor_level}"`} className="bg-slate-900 border border-orange-500 text-white rounded-xl shadow p-6 ">
               <h2 className="text-xl font-semibold mb-2">{ev.event_name}</h2>
               <p className="text-sm mb-1">Date: {new Date(ev.event_date).toLocaleDateString()}</p>
               <p className="text-sm mb-1">Category: {SetCategory(ev.category)}</p>

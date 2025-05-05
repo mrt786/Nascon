@@ -52,7 +52,7 @@ const SponsorPaymentsPage = () => {
             <p className="text-center text-white-400">No payments found.</p>
           )}
           {payments && [...new Map(payments.map(p => [p.payment_id, p])).values()].map(p => (
-        <div key={p.payment_id} className="bg-slate-900 text-white rounded-xl shadow p-4 flex justify-between items-center">
+        <div key={p.payment_id} className="bg-slate-900 border border-orange-500 text-white rounded-xl shadow p-4 flex justify-between items-center">
         <div>
           <p>Payment ID: {p.payment_id}</p>
           <p>Event: {p.event_name}</p>
