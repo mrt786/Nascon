@@ -27,7 +27,7 @@ const ApprovedEventCard = ({ event, onAction }) => {
     window.location.reload(); // Reload the page to reflect the new state
   };
   return (
-    <div className="group relative border border-orange-500 rounded-lg shadow-md p-4 transition-all duration-300 bg-slate-900 hover:bg-slate-950-100 cursor-pointer">
+    <div className="group relative border border-orange-500 rounded-lg shadow-md p-4 transition-all duration-300 bg-slate-900  w-full min-w-md- max-w-md cursor-pointer">
   {/* Basic Info (always visible) */}
   <div>
     <h2 className="text-xl font-bold text-orange-500">{event.event_name}</h2>
