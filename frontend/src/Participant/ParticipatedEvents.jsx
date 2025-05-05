@@ -73,6 +73,8 @@ const ParticipatedEvents = () => {
           <p className="mb-2">Registration Fee: Rs {event.registration_fee}</p>
           <p className="mb-2">{event.event_description}</p>
           <p className="mb-2">Rules: {event.rules}</p>
+          <p className="mb-2">Score: {event.average_score ? event.average_score : "Score not Assigned"}</p>
+          <p className="mb-2">Round: {event.current_round}</p>
         </div>
       </motion.div>
     ))}
