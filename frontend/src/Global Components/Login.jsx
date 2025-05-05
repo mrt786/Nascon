@@ -54,7 +54,7 @@ const Login = ({ role }) => {
   return (
       <div className="min-h-screen flex items-center justify-center bg-slate-800 text-white">
       <AnimatedForm>
-      <h2 className="text-2xl font-bold mb-4 text-orange-500 capitalize">
+      <h2 className="text-2xl text-center font-bold mb-4 text-orange-500 capitalize">
           {EditRole(role)} Login Form
         </h2>
 
