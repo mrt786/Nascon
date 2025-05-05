@@ -38,7 +38,7 @@ const ViewEventDetails = () => {
   };
 
   return (
-    <div className='pt-20  '>
+    <div className='pt-20  bg-slate-800 h-screen '>
 
     <div className="max-w-2xl mx-auto  bg-slate-900 rounded-2xl shadow-xl">
     <AnimatedForm>

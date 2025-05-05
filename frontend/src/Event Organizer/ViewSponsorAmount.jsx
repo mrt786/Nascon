@@ -38,8 +38,8 @@ const ViewSponsorAmount = () => {
   };
 
   return (
-    <div className="pt-20 bg-slate-800 min-h-screen flex items-center justify-center">
-      <div className="w-full max-w-md bg-slate-900 rounded-2xl shadow-xl">
+    <div className=" bg-slate-800 min-h-screen flex items-start pt-20 justify-center">
+      {/* <div className="w-full max-w-md bg-slate-900 rounded-2xl shadow-xl"> */}
         <AnimatedForm>
           <h2 className="text-2xl font-bold mb-6 text-center text-orange-500">
             View Sponsor Amount
@@ -77,7 +77,7 @@ const ViewSponsorAmount = () => {
           </div>
         </AnimatedForm>
       </div>
-    </div>
+    // </div>
   );
 };
 

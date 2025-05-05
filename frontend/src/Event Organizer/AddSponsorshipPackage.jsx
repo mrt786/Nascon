@@ -69,10 +69,10 @@ const AddSponsorshipPackages = () => {
   }
 
   return (
-    <div className="bg-slate-800 min-h-screen text-white pt-20">
-      <div className="max-w-3xl mx-auto px-4 py-8">
+    <div className="bg-slate-800 min-h-screen text-white pt-12">
+      <div className="max-w-3xl mx-auto px-4 ">
         <h1 className="text-3xl font-bold text-center mb-6 text-orange-500">Add Sponsorship Packages</h1>
-        {/* <AnimatedForm> */}
+        <AnimatedForm>
             <form onSubmit={handleSubmit} className="space-y-6">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -91,7 +91,7 @@ const AddSponsorshipPackages = () => {
             {packages.map((pkg, idx) => (
                 <motion.div
                 key={idx}
-                className="bg-slate-900 p-4 rounded-lg relative"
+                className="bg-slate-800 p-4 rounded-lg relative"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.1 }}
@@ -129,7 +129,7 @@ const AddSponsorshipPackages = () => {
             {error && <p className="text-red-400">{error}</p>}
             {success && <p className="text-green-400">{success}</p>}
             </form>
-        {/* </AnimatedForm> */}
+        </AnimatedForm>
       </div>
     </div>
   );

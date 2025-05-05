@@ -69,7 +69,9 @@ const OrganizeEvent = () => {
     <div className="bg-slate-800 min-h-screen text-white">
       
 
-      <div className="flex items-center justify-center py-10 px-4">
+      <div className="flex items-center justify-center py-10 px-4 ">
+        <div className='min-w-sm max-w-md'>
+
         <AnimatedForm>
         <h2 className="text-2xl font-bold mb-6 text-center text-orange-500">Organize Event</h2>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -155,6 +157,7 @@ const OrganizeEvent = () => {
             <LoginButton text="Submit Event" btype="submit" />
           </form>
         </AnimatedForm>
+        </div>
       </div>
     </div>
   );
