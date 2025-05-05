@@ -111,11 +111,11 @@ router.get('/payments', auth, async (req, res) => {
          es.sponsor_id,
          p.sponsor_level
        FROM sponsor_payments sp
-       JOIN event_sponsors es    ON sp.payment_id = es.payment_id
+       JOIN event_sponsors es ON sp.payment_id = es.payment_id
+       JOIN event_details d ON es.event_id = d.event_id
        JOIN event_sponsorship_packages p 
-         ON es.event_id = p.event_id
-       JOIN event_details d 
-         ON es.event_id = d.event_id
+         ON es.event_id = p.event_id 
+         AND sp.amount = p.sponsor_amount  /* Match the specific package by amount */
        WHERE es.sponsor_id = ?`,
       [sponsor_id]
     );
