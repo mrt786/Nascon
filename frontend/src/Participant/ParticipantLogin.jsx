@@ -99,7 +99,8 @@ const handleSubmit = async (e) => {
    <PageWrapper>
      <div className="min-h-screen flex items-center justify-center bg-slate-800 text-white">
       <AnimatedForm>
-          <h2 className="text-2xl font-bold mb-4 text-orange-500">
+          <div className = "min-w-sm max-w-sm">
+          <h2 className="text-2xl font-bold mb-4 text-orange-500 text-center">
             {activeTab === 'login'
               ? 'Participant Login Form'
               : 'Participant Signup Form'}
@@ -188,6 +189,7 @@ const handleSubmit = async (e) => {
             ) : (
               <>Already have an account? <span onClick={() => handleTabChange('login')} className="text-blue-700 cursor-pointer">Login</span></>
             )}
+          </div>
           </div>
       </AnimatedForm>
     </div>

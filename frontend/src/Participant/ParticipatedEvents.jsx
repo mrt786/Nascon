@@ -41,7 +41,7 @@ const ParticipatedEvents = () => {
 
   if (events.length === 0) {
     return (
-      <div className="text-center text-gray-500 mt-10">
+      <div className="text-center bg-slate-800 h-screen  text-gray-500 mt-16">
         No participated events found.
       </div>
     );

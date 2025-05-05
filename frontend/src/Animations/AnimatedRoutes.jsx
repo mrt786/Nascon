@@ -57,42 +57,33 @@ function AnimatedRoutes() {
         <Route
           path="/participant-login"
           element={
-            <WholePageWrapper>
               <ParticipantAuth />
-            </WholePageWrapper>
           }
         />
         <Route
           path="/participant-signup"
           element={
-            <WholePageWrapper>
               <ParticipantAuth />
-            </WholePageWrapper>
           }
         />
         <Route
           path="/admin-login"
           element={
-            <WholePageWrapper>
               <Login role="admin" />
-            </WholePageWrapper>
           }
         />
         <Route
           path="/judge-login"
           element={
-            <WholePageWrapper>
               <Login role="judge" />
-            </WholePageWrapper>
           }
         />
         <Route
           path="/judge-home"
           element={
             <ProtectedRoute allowedRole="judge">
-              <WholePageWrapper>
+
                 <HomePage roles="judge" />
-              </WholePageWrapper>
             </ProtectedRoute>
           }
         />
@@ -100,9 +91,8 @@ function AnimatedRoutes() {
           path="/judge/my-events"
           element={
             <ProtectedRoute allowedRole="judge">
-              <WholePageWrapper>
+
                 <JudgingEventsPage/>
-              </WholePageWrapper>
             </ProtectedRoute>
           }
         />
@@ -110,35 +100,29 @@ function AnimatedRoutes() {
           path="/judge/evaluate-events"
           element={
             <ProtectedRoute allowedRole="judge">
-              <WholePageWrapper>
+
                 <JudgeAssignedEvents />
-              </WholePageWrapper>
             </ProtectedRoute>
           }
         />
         <Route
           path="/sponsor-login"
           element={
-            <WholePageWrapper>
               <Login role="sponsor" />
-            </WholePageWrapper>
           }
         />
         <Route
           path="/event_organizer-login"
           element={
-            <WholePageWrapper>
               <Login role="event_organizer" />
-            </WholePageWrapper>
           }
         />
                 <Route
           path="/event_organizer-home"
           element={
             <ProtectedRoute allowedRole="event_organizer">
-              <WholePageWrapper>
+
                 <HomePage roles="event_organizer" />
-              </WholePageWrapper>
             </ProtectedRoute>
           }
         />
@@ -146,9 +130,8 @@ function AnimatedRoutes() {
           path="/organize-events"
           element={
             <ProtectedRoute allowedRole="event_organizer">
-              <WholePageWrapper>
+
                 <OrganizeEvent />
-              </WholePageWrapper>
             </ProtectedRoute>
           }
         />
@@ -156,9 +139,8 @@ function AnimatedRoutes() {
           path="/event-organizer/approved-events"
           element={
             <ProtectedRoute allowedRole="event_organizer">
-              <WholePageWrapper>
+
                 <ApprovedEventsByOrganizor />
-              </WholePageWrapper>
             </ProtectedRoute>
           }
         />
@@ -166,9 +148,8 @@ function AnimatedRoutes() {
           path="/add-sponsorships-packages"
           element={
             <ProtectedRoute allowedRole="event_organizer">
-              <WholePageWrapper>
+
                 <AddSponsorshipPackages />
-              </WholePageWrapper>
             </ProtectedRoute>
           }
         />
@@ -176,9 +157,8 @@ function AnimatedRoutes() {
           path="/view-event-details"
           element={
             <ProtectedRoute allowedRole="event_organizer">
-              <WholePageWrapper>
+
                 <ViewEventDetails />
-              </WholePageWrapper>
             </ProtectedRoute>
           }
         />
@@ -186,9 +166,8 @@ function AnimatedRoutes() {
           path="/organizer/sponsor-amount"
           element={
             <ProtectedRoute allowedRole="event_organizer">
-              <WholePageWrapper>
+
                 <ViewSponsorAmount/>
-              </WholePageWrapper>
             </ProtectedRoute>
           }
         />
@@ -196,9 +175,8 @@ function AnimatedRoutes() {
           path="/sponsor-income-report"
           element={
             <ProtectedRoute allowedRole="event_organizer">
-              <WholePageWrapper>
+
                 <SponsorIncomeReport/>
-              </WholePageWrapper>
             </ProtectedRoute>
           }
         />
@@ -209,9 +187,8 @@ function AnimatedRoutes() {
           path="/participant-home"
           element={
             <ProtectedRoute allowedRole="participant">
-              <WholePageWrapper>
+
                 <HomePage roles="participant" />
-              </WholePageWrapper>
             </ProtectedRoute>
           }
         />
@@ -219,9 +196,8 @@ function AnimatedRoutes() {
           path="/sponsor-home"
           element={
             <ProtectedRoute allowedRole="sponsor">
-              <WholePageWrapper>
+
                 <HomePage roles="sponsor" />
-              </WholePageWrapper>
             </ProtectedRoute>
           }
         />
@@ -229,9 +205,8 @@ function AnimatedRoutes() {
           path="/admin-home"
           element={
             <ProtectedRoute allowedRole="admin">
-              <WholePageWrapper>
+
                 <HomePage roles="admin" />
-              </WholePageWrapper>
             </ProtectedRoute>
           }
         />
@@ -241,9 +216,8 @@ function AnimatedRoutes() {
           path="/approve-events"
           element={
             <ProtectedRoute allowedRole="admin">
-              <WholePageWrapper>
+
                 <PendingEventsPage />
-              </WholePageWrapper>
             </ProtectedRoute>
           }
         />
@@ -251,9 +225,8 @@ function AnimatedRoutes() {
           path="/create-user"
           element={
             <ProtectedRoute allowedRole="admin">
-              <WholePageWrapper>
+
                 <AdminCreateUser />
-              </WholePageWrapper>
             </ProtectedRoute>
           }
         />
@@ -261,9 +234,8 @@ function AnimatedRoutes() {
           path="/venue-report"
           element={
             <ProtectedRoute allowedRole="admin">
-              <WholePageWrapper>
+
                 <VenueUtilizationReport/>
-              </WholePageWrapper>
             </ProtectedRoute>
           }
         />
@@ -271,9 +243,8 @@ function AnimatedRoutes() {
           path="/finance-report"
           element={
             <ProtectedRoute allowedRole="admin">
-              <WholePageWrapper>
+
                 <FinanceReport/>
-              </WholePageWrapper>
             </ProtectedRoute>
           }
         />
@@ -281,9 +252,8 @@ function AnimatedRoutes() {
           path="/demographic-report"
           element={
             <ProtectedRoute allowedRole="admin">
-              <WholePageWrapper>
+
                 <ParticipantDemographicsReport/>
-              </WholePageWrapper>
             </ProtectedRoute>
           }
         />
@@ -291,9 +261,8 @@ function AnimatedRoutes() {
           path="/accommodations"
           element={
             <ProtectedRoute allowedRole="participant">
-              <WholePageWrapper>
+
                 <AccommodationPage />
-              </WholePageWrapper>
             </ProtectedRoute>
           }
         />
@@ -301,9 +270,8 @@ function AnimatedRoutes() {
           path="/events"
           element={
             <ProtectedRoute allowedRole="participant">
-              <WholePageWrapper>
+
                 <ApprovedEventsPage />
-              </WholePageWrapper>
             </ProtectedRoute>
           }
         />
@@ -311,9 +279,8 @@ function AnimatedRoutes() {
           path="/admin-events"
           element={
             <ProtectedRoute allowedRole="admin">
-              <WholePageWrapper>
+
                 <ApprovedEventsPage />
-              </WholePageWrapper>
             </ProtectedRoute>
           }
         />
@@ -321,9 +288,8 @@ function AnimatedRoutes() {
           path="/my-events"
           element={
             <ProtectedRoute allowedRole="participant">
-              <WholePageWrapper>
+
                 <ParticipatedEvents />
-              </WholePageWrapper>
             </ProtectedRoute>
           }
         />
@@ -331,9 +297,8 @@ function AnimatedRoutes() {
           path="/sponsor-events"
           element={
             <ProtectedRoute allowedRole="sponsor">
-              <WholePageWrapper>
+
                 <SponsorEventPage />
-              </WholePageWrapper>
             </ProtectedRoute>
           }
         />
@@ -341,9 +306,8 @@ function AnimatedRoutes() {
           path="/sponsor/payments"
           element={
             <ProtectedRoute allowedRole="sponsor">
-              <WholePageWrapper>
+
                 <SponsorPaymentsPage />
-              </WholePageWrapper>
             </ProtectedRoute>
           }
         />
@@ -351,9 +315,8 @@ function AnimatedRoutes() {
           path="/sponsor/approved-events"
           element={
             <ProtectedRoute allowedRole="sponsor">
-              <WholePageWrapper>
+
                 <SponsoredEventsPage/>
-              </WholePageWrapper>
             </ProtectedRoute>
           }
         />
@@ -361,9 +324,8 @@ function AnimatedRoutes() {
           path="/participant/register/:eventId"
           element={
             <ProtectedRoute allowedRole="participant">
-              <WholePageWrapper>
+
                 <ParticipantRegisterForm />
-              </WholePageWrapper>
             </ProtectedRoute>
           }
         />
@@ -371,9 +333,8 @@ function AnimatedRoutes() {
           path="/participant/payment/:eventId"
           element={
             <ProtectedRoute allowedRole="participant">
-              <WholePageWrapper>
+
                 <ParticipantPaymentForm />
-              </WholePageWrapper>
             </ProtectedRoute>
           }
         />
@@ -381,9 +342,8 @@ function AnimatedRoutes() {
           path="/booking"
           element={
             <ProtectedRoute allowedRole="participant">
-              <WholePageWrapper>
+
                 <BookingForm />
-              </WholePageWrapper>
             </ProtectedRoute>
           }
         />
@@ -391,9 +351,8 @@ function AnimatedRoutes() {
           path="/judge/assign-event"
           element={
             <ProtectedRoute allowedRole="judge">
-              <WholePageWrapper>
+
                 <AssignToEventForm />
-              </WholePageWrapper>
             </ProtectedRoute>
           }
         />
@@ -401,9 +360,8 @@ function AnimatedRoutes() {
           path="/judge/submit-score/:eventId"
           element={
             <ProtectedRoute allowedRole="judge">
-              <WholePageWrapper>
+
                 <SubmitScoreForm />
-              </WholePageWrapper>
             </ProtectedRoute>
           }
         />
@@ -412,9 +370,7 @@ function AnimatedRoutes() {
         <Route
           path="*"
           element={
-            <WholePageWrapper>
               <p>Page not found</p>
-            </WholePageWrapper>
           }
         />
       </Routes>
@@ -424,29 +380,7 @@ function AnimatedRoutes() {
 
 export default AnimatedRoutes;
 
-// import React from 'react';
-// import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-// import { AnimatePresence } from 'framer-motion';
-// import WholePageWrapper from './PageWrapper.jsx';
-// import ParticipantAuth from '../Participant/ParticipantLogin.jsx';
-// import Login from '../Global Components/Login.jsx';
-// import AdminCreateUser from '../Admin/AdminCreateUser.jsx';
-// import AccommodationPage from '../Global Components/Accommodation.jsx';
-// import HomePage from '../Global Components/Home.jsx';
-// import BookingForm from '../Global Components/BookingForm.jsx';
-// import OrganizeEvent from '../Event Organizor/OrganizeEvent.jsx';
-// import PendingEventsPage from '../Admin/PendingEvents.jsx';
-// import SponsorEventPage from '../Sponsors/SponsorEventPage.jsx';
-// import ApprovedEventsPage from '../Global Components/Events.jsx';
-// import SponsorPaymentsPage from '../Sponsors/SponsorPaymentPage.jsx';
-// import ApprovedEventsByOrganizor from '../Event Organizor/ApprovedEventsByOrganizor.jsx';
-// import ParticipantRegisterForm from '../Participant/ParticipantRegisterForm.jsx';
-// import ParticipantPaymentForm from '../Participant/ParticipantPayment.jsx';
-// import JudgeAssignedEvents from '../Judge/JudgeAssignedEvent.jsx';
-// import AssignToEventForm from '../Judge/JudgeAssignToEventForm.jsx';
-// import SubmitScoreForm from '../Judge/SubmitScoreForm.jsx';
 
-// // AnimatedRoutes handles the AnimatePresence and location keying
 // function AnimatedRoutes() {
 //   const location = useLocation();
 //   console.log(location.pathname); // Log the current pathname for debugging
@@ -458,185 +392,185 @@ export default AnimatedRoutes;
 //         <Route
 //           path="/participant-login"
 //           element={
-//             <WholePageWrapper>
+//         
 //               <ParticipantAuth />
-//             </WholePageWrapper>
+//             // </WholePageWrapper>
 //           }
 //         />
 //         <Route
 //           path="/participant-signup"
 //           element={
-//             <WholePageWrapper>
+//         
 //               <ParticipantAuth />
-//             </WholePageWrapper>
+//             // </WholePageWrapper>
 //           }
 //         />
 //         <Route
 //           path="/admin-login"
 //           element={
-//             <WholePageWrapper>
+//         
 //               <Login role="admin" />
-//             </WholePageWrapper>
+//             // </WholePageWrapper>
 //           }
 //         />
 //         <Route
 //           path="/judge-login"
 //           element={
-//             <WholePageWrapper>
+//         
 //               <Login role="judge" />
-//             </WholePageWrapper>
+//             // </WholePageWrapper>
 //           }
 //         />
 //         <Route
 //           path="/sponsor-login"
 //           element={
-//             <WholePageWrapper>
+//         
 //               <Login role="sponsor" />
-//             </WholePageWrapper>
+//             // </WholePageWrapper>
 //           }
 //         />
 //         <Route
 //           path="/event_organizer-login"
 //           element={
-//             <WholePageWrapper>
+//         
 //               <Login role="Event Organizer" />
-//             </WholePageWrapper>
+//             // </WholePageWrapper>
 //           }
 //         />
 //         <Route
 //           path="/organize-events"
 //           element={
-//             <WholePageWrapper>
+//         
 //               <OrganizeEvent />
-//             </WholePageWrapper>
+//             // </WholePageWrapper>
 //           }
 //         />
 //         <Route
 //           path="/approve-events"
 //           element={
-//             <WholePageWrapper>
+//         
 //               <PendingEventsPage />
-//             </WholePageWrapper>
+//             // </WholePageWrapper>
 //           }
 //         />
 //         <Route
 //           path="/create-user"
 //           element={
-//             <WholePageWrapper>
+//         
 //               <AdminCreateUser />
-//             </WholePageWrapper>
+//             // </WholePageWrapper>
 //           }
 //         />
 //         <Route
 //           path="/accommodations"
 //           element={
-//             <WholePageWrapper>
+//         
 //               <AccommodationPage />
-//             </WholePageWrapper>
+//             // </WholePageWrapper>
 //           }
 //         />
 //         <Route
 //           path="/home"
 //           element={
-//             <WholePageWrapper>
+//      
 //               <HomePage roles="participant" />
-//             </WholePageWrapper>
+//
 //           }
 //         />
 //         <Route
 //           path="/booking"
 //           element={
-//             <WholePageWrapper>
+//      
 //               <BookingForm />
-//             </WholePageWrapper>
+//
 //           }
 //         />
 //         <Route
 //           path="/"
 //           element={
-//             <WholePageWrapper>
+//      
 //               <Login role="participant" />
-//             </WholePageWrapper>
+//
 //           }
 //         />
 //         <Route
 //           path="/events"
 //           element={
-//             <WholePageWrapper>
+//      
 //               <ApprovedEventsPage />
-//             </WholePageWrapper>
+//
 //           }
 //         />
 //         <Route
 //           path="/sponsor-events"
 //           element={
-//             <WholePageWrapper>
+//      
 //               <SponsorEventPage />
-//             </WholePageWrapper>
+//
 //           }
 //         />
 //         <Route
 //           path="/sponsor/payments"
 //           element={
-//             <WholePageWrapper>
+//      
 //               <SponsorPaymentsPage />
-//             </WholePageWrapper>
+//
 //           }
 //         />
 //         <Route
 //           path="/event-organizer/approved-events"
 //           element={
-//             <WholePageWrapper>
+//      
 //               <ApprovedEventsByOrganizor />
-//             </WholePageWrapper>
+//
 //           }
 //         />
 //         <Route
 //           path="/participant/register/:eventId"
 //           element={
-//             <WholePageWrapper>
+//      
 //               <ParticipantRegisterForm />
-//             </WholePageWrapper>
+//
 //           }
 //         />
 //         <Route
 //           path="/participant/payment/:eventId"
 //           element={
-//             <WholePageWrapper>
+//      
 //               <ParticipantPaymentForm />
-//             </WholePageWrapper>
+//
 //           }
 //         />
 //         <Route
 //           path="/judge/my-events"
 //           element={
-//             <WholePageWrapper>
+//      
 //               <JudgeAssignedEvents />
-//             </WholePageWrapper>
+//
 //           }
 //         />
 //         <Route
 //           path="/judge/assign-event"
 //           element={
-//             <WholePageWrapper>
+//      
 //               <AssignToEventForm />
-//             </WholePageWrapper>
+//
 //           }
 //         />
 //         <Route
 //           path="/judge/submit-score/:eventId"
 //           element={
-//             <WholePageWrapper>
+//      
 //               <SubmitScoreForm />
-//             </WholePageWrapper>
+//
 //           }
 //         />
 //         <Route
 //           path="*"
 //           element={
-//             <WholePageWrapper>
+//      
 //               <p>Page not found</p>
-//             </WholePageWrapper>
+//
 //           }
 //         />
       

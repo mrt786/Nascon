@@ -68,7 +68,7 @@ const Navbar = ({ role }) => {
   };
   const handleLogout = () => {
     localStorage.removeItem('authToken'); // Clear the token
-    localStorage.removeItem('userRole'); // Clear the role
+    localStorage.removeItem('role'); // Clear the role
     const redirectPage = `/${role}-login`;
     navigate(redirectPage); // Redirect to login page}
     window.location.reload(); // Refresh the page

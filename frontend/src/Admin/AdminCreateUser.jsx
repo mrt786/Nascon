@@ -8,6 +8,7 @@ import { getUserRole } from '../utils/auth';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 import { toast } from 'sonner';
+import AnimatedForm from '../Animations/AnimatedForms';
 
 const AdminCreateUser = () => {
   const [formData, setFormData] = useState({
@@ -33,6 +34,7 @@ const AdminCreateUser = () => {
   };
 
   const handleSubmit= async (e) => {
+  
     e.preventDefault();
     setValidationError('');
     try{
@@ -83,7 +85,10 @@ const AdminCreateUser = () => {
   return (
     <div >
       <div className="min-h-screen flex items-center justify-center bg-slate-800 text-white">
+
+      <AnimatedForm>
       <div className="bg-slate-900 rounded-2xl shadow-xl p-8 w-[380px] text-center">
+        
         <h2 className="text-2xl font-bold mb-6 text-orange-500">Create New User</h2>
         
         <form onSubmit={handleSubmit} className="space-y-4 text-left"> 
@@ -127,6 +132,8 @@ const AdminCreateUser = () => {
           <LoginButton btype = 'submit' text = 'Create User'/>
         </form>
       </div>
+
+      </AnimatedForm>
     </div>
     </div>
   );

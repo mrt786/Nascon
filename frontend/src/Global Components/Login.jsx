@@ -31,9 +31,9 @@ const Login = ({ role }) => {
         email,
         password,
       });
-      const role = getUserRole(); // Get the role from the response or local storage
       const  token  = response.data.token;
       localStorage.setItem('token', token); // Save token for authentication
+      const role = getUserRole(); // Get the role from the response or local storage
       localStorage.setItem('role', role); // Save role for later use
       console.log('Login successful:', role);
       toast.success(`${role} Login successful!`); // Show success message
