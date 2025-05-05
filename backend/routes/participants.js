@@ -133,20 +133,33 @@ router.get('/my-events', auth, async (req, res) => {
   try {
     const [rows] = await db.query(
       `SELECT 
-         e.event_id,
-         d.event_name,
-         d.event_date,
-         d.registration_fee,
-         d.current_round,
-         d.rules,
-         d.event_description,
-         d.max_participants,
-         e.category,
-         p.team_name
-       FROM participants p
-       JOIN nascon_events e ON p.event_id = e.event_id
-       JOIN event_details d ON e.event_id = d.event_id
-       WHERE p.user_id = ?`,
+      e.event_id,
+      d.event_name,
+      d.event_date,
+      d.registration_fee,
+      d.current_round,
+      d.rules,
+      d.event_description,
+      d.max_participants,
+      e.category,
+      p.team_name,
+      AVG(s.score) as average_score
+    FROM participants p
+    JOIN nascon_events e ON p.event_id = e.event_id
+    JOIN event_details d ON e.event_id = d.event_id
+    LEFT JOIN scores s ON p.user_id = s.user_id AND p.event_id = s.event_id
+    WHERE p.user_id = ?
+    GROUP BY 
+      e.event_id,
+      d.event_name,
+      d.event_date,
+      d.registration_fee,
+      d.current_round,
+      d.rules,
+      d.event_description,
+      d.max_participants,
+      e.category,
+      p.team_name`,
       [user_id]
     );
     res.send(rows);
